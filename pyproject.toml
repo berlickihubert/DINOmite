@@ -1,0 +1,22 @@
+[project]
+name = "dinomite"
+version = "0.1.0"
+description = "DINOmite"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "jupyter>=1.1.1",
+    # TODO: add pytorch with/without CUDA depending on platform
+]
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.3.0",
+    "ruff>=0.12.8",
+]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.format]
+quote-style = "single"
