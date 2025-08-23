@@ -7,6 +7,7 @@ from tqdm import tqdm
 import sys
 import os
 import glob
+
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 
@@ -91,5 +92,7 @@ for epoch in range(start_epoch, 10):
 
 # Save trained classifier
 print('\nSaving model...')
-torch.save(classifier.state_dict(), '../../linear_head_classification/models/cifar10_linear_classifier.pth')
+torch.save(
+    classifier.state_dict(), '../../linear_head_classification/models/cifar10_linear_classifier.pth'
+)
 print('✅ Model saved to ../../linear_head_classification/models/cifar10_linear_classifier.pth')
