@@ -6,6 +6,7 @@ from transformers import AutoModel, AutoImageProcessor
 from tqdm import tqdm
 import sys
 import os
+import glob
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 
@@ -35,9 +36,20 @@ classifier = nn.Linear(384, 10)
 criterion = nn.CrossEntropyLoss()
 optimizer = torch.optim.Adam(classifier.parameters(), lr=0.001)
 
+# Load checkpoint if exists
+start_epoch = 0
+checkpoints = glob.glob('../../models/checkpoint_epoch_*.pth')
+if checkpoints:
+    latest = max(checkpoints, key=lambda x: int(x.split('_')[-1].split('.')[0]))
+    checkpoint = torch.load(latest)
+    classifier.load_state_dict(checkpoint['model'])
+    optimizer.load_state_dict(checkpoint['optimizer'])
+    start_epoch = checkpoint['epoch'] + 1
+    print(f'🔄 Resumed from epoch {start_epoch}')
+
 # Training
 print('Starting training...')
-for epoch in range(10):
+for epoch in range(start_epoch, 10):
     epoch_loss = 0
     num_batches = 0
 
@@ -64,6 +76,18 @@ for epoch in range(10):
 
     avg_loss = epoch_loss / num_batches
     print(f'Epoch {epoch + 1}/10 - Average Loss: {avg_loss:.4f}')
+
+    # Save checkpoint
+    os.makedirs('../../models', exist_ok=True)
+    torch.save(
+        {
+            'epoch': epoch,
+            'model': classifier.state_dict(),
+            'optimizer': optimizer.state_dict(),
+            'loss': avg_loss,
+        },
+        f'../../models/checkpoint_epoch_{epoch + 1}.pth',
+    )
 
 # Save trained classifier
 print('\nSaving model...')
