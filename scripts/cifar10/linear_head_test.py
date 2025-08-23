@@ -37,7 +37,7 @@ def load_model():
         # Load from checkpoint
         import glob
 
-        checkpoints = glob.glob('../../models/checkpoint_epoch_*.pth')
+        checkpoints = glob.glob('../../models/linear_head_classification/checkpoint_epoch_*.pth')
         latest = max(checkpoints, key=lambda x: int(x.split('_')[-1].split('.')[0]))
         checkpoint = torch.load(latest)
         classifier.load_state_dict(checkpoint['model'])

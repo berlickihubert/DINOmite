@@ -38,7 +38,7 @@ optimizer = torch.optim.Adam(classifier.parameters(), lr=0.001)
 
 # Load checkpoint if exists
 start_epoch = 0
-checkpoints = glob.glob('../../models/checkpoint_epoch_*.pth')
+checkpoints = glob.glob('../../linear_head_classification/models/checkpoint_epoch_*.pth')
 if checkpoints:
     latest = max(checkpoints, key=lambda x: int(x.split('_')[-1].split('.')[0]))
     checkpoint = torch.load(latest)
@@ -91,5 +91,5 @@ for epoch in range(start_epoch, 10):
 
 # Save trained classifier
 print('\nSaving model...')
-torch.save(classifier.state_dict(), '../../models/cifar10_linear_classifier.pth')
-print('✅ Model saved to ../../models/cifar10_linear_classifier.pth')
+torch.save(classifier.state_dict(), '../../linear_head_classification/models/cifar10_linear_classifier.pth')
+print('✅ Model saved to ../../linear_head_classification/models/cifar10_linear_classifier.pth')
