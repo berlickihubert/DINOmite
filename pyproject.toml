@@ -5,8 +5,10 @@ description = "DINOmite"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "joblib>=1.5.1",
     "jupyter>=1.1.1",
     "matplotlib>=3.10.5",
+    "scikit-learn>=1.7.1",
     "torch>=2.8.0",
     "torchvision>=0.23.0",
     "transformers",
