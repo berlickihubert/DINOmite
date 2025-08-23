@@ -6,7 +6,11 @@ readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "jupyter>=1.1.1",
+<<<<<<< HEAD
     "pillow>=11.3.0",
+=======
+    "matplotlib>=3.10.5",
+>>>>>>> a741b62 (Add datasets)
     "torch>=2.8.0",
     "torchvision>=0.23.0",
     "transformers>=4.55.2",
