@@ -4,6 +4,7 @@ import torchvision
 import torchvision.transforms as transforms
 from transformers import AutoModel, AutoImageProcessor
 from tqdm import tqdm
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 
 # Data loading
