@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import numpy as np
 import os
-from classification_model import pipe
+from models.classification_model import pipe
 
 # CIFAR-10 classes
 CIFAR10_CLASSES = [
