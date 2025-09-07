@@ -33,9 +33,9 @@ class DinoWithLinearHead(nn.Module):
             checkpoint = torch.load(latest)
             self.head.load_state_dict(checkpoint['model'])
 
-    def forward(self, pil_images):
-        inputs = self.processor(pil_images, return_tensors='pt')
-        outputs = self.dino(**inputs)
+    def forward(self, img):
+        dino_inputs = self.processor(img, return_tensors='pt')
+        outputs = self.dino(**dino_inputs)
         features = outputs.last_hidden_state[:, 0, :]
         logits = self.head(features)
         return logits

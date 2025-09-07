@@ -24,8 +24,7 @@ def test_classifier():
     print('🧪 Testing classifier...')
     with torch.no_grad():
         for images, labels in tqdm(test_loader, desc='Testing'):
-            pil_images = [transforms.ToPILImage()(img) for img in images]
-            logits = model(pil_images)
+            logits = model(images)
             _, predicted = torch.max(logits, 1)
             total += labels.size(0)
             correct += (predicted == labels).sum().item()
