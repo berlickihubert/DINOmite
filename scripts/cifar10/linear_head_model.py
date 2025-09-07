@@ -34,7 +34,7 @@ class DinoWithLinearHead(nn.Module):
             self.head.load_state_dict(checkpoint['model'])
 
     def forward(self, img):
-        dino_inputs = self.processor(img, return_tensors='pt')
+        dino_inputs = self.processor(img, return_tensors='pt', do_rescale=False)
         outputs = self.dino(**dino_inputs)
         features = outputs.last_hidden_state[:, 0, :]
         logits = self.head(features)
