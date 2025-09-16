@@ -19,6 +19,13 @@ A project for adversarial robustness testing using DINOv3 vision transformer mod
 - Resized to 224×224 for DINOv3 compatibility
 - Primary dataset for adversarial robustness testing
 
+Adversarial examples generated on CIFAR-10 using the Carlini-Wagner attack:
+
+<p align="center">
+	<img src="adversarial_examples/cw_example_cifar10_1.png" alt="CW Example 1" width="320"/>
+	<img src="adversarial_examples/cw_example_cifar10_2.png" alt="CW Example 2" width="320"/>
+	<img src="adversarial_examples/cw_example_cifar10_3.png" alt="CW Example 3" width="320"/>
+</p>
 ---
 
 ### GTSRB Dataset (German Traffic Sign Recognition Benchmark)
