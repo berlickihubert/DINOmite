@@ -19,7 +19,7 @@ model = DinoWithLinearHead('../../models/cifar10_linear_classifier.pth')
 model = model.to(device)
 model.eval()
 
-def carlini_wagner_attack(model, img, original_label, target_label, c=1e-2, kappa=0, max_iter=500, learning_rate=1e-2):
+def carlini_wagner_attack(model, img, original_label, target_label, c=4e-2, kappa=0, max_iter=500, learning_rate=1e-2):
     w = torch.atanh((img * 1.999999) - 1).detach()
     w.requires_grad = True
 
@@ -48,18 +48,31 @@ def carlini_wagner_attack(model, img, original_label, target_label, c=1e-2, kapp
 
     return adv_img.detach()
 
-img, label = dataset[random.randint(0, len(dataset)-1)]
-print(f"Original label: {label}")
-img = img.unsqueeze(0).to(device)
-original_label = torch.tensor([label]).to(device)
-target_label = torch.tensor([5]).to(device)
-adv_img = carlini_wagner_attack(model, img, original_label, target_label)
+for _ in range (15):
+    img, label = dataset[random.randint(0, len(dataset)-1)]
+    print(f"Original label: {label}")
+    img = img.unsqueeze(0).to(device)
+    original_label = torch.tensor([label]).to(device)
+    target_class = random.choice([i for i in range(10) if i != label])
+    target_label = torch.tensor([target_class]).to(device)
+    adv_img = carlini_wagner_attack(model, img, original_label, target_label)
 
-og_logits = model(img).detach().cpu().numpy().flatten()
-adv_logits = model(adv_img).detach().cpu().numpy().flatten()
+    og_logits = model(img).detach().cpu().numpy().flatten()
+    adv_logits = model(adv_img).detach().cpu().numpy().flatten()
 
-SAVE_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../adversarial_examples/example_1.png"))
-save_dir = os.path.dirname(SAVE_PATH)
-os.makedirs(save_dir, exist_ok=True)
+    save_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../adversarial_examples"))
+    os.makedirs(save_dir, exist_ok=True)
+    i = 1
+    while True:
+        save_path = os.path.join(save_dir, f"cw_example_cifar10_{i}.png")
+        if not os.path.exists(save_path):
+            break
+        i += 1
+    SAVE_PATH = save_path
+    save_dir = os.path.dirname(SAVE_PATH)
+    os.makedirs(save_dir, exist_ok=True)
 
-save_images_side_by_side_with_logits(img.squeeze(0), adv_img.squeeze(0), og_logits, adv_logits, "Original (left) vs Adversarial (right)", SAVE_PATH)
+    og_pred = int(og_logits.argmax())
+    adv_pred = int(adv_logits.argmax())
+    if og_pred != adv_pred:
+        save_images_side_by_side_with_logits(img.squeeze(0), adv_img.squeeze(0), og_logits, adv_logits, "Original (left) vs Adversarial (right)", SAVE_PATH)
