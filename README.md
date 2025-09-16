@@ -6,9 +6,6 @@ A project for adversarial robustness testing using DINOv3 vision transformer mod
 
 ### CIFAR-10 Dataset
 
-**Links:**
-- [Official page](https://www.cs.toronto.edu/~kriz/cifar.html)
-- [Paper](https://www.cs.toronto.edu/~kriz/learning-features-2009-TR.pdf)
 
 **Adversarial examples generated on CIFAR-10 using the Carlini-Wagner attack:**
 
@@ -18,6 +15,10 @@ A project for adversarial robustness testing using DINOv3 vision transformer mod
 	<img src="adversarial_examples/cw_example_cifar10_3.png" alt="CW Example 3" width="320"/>
     <img src="adversarial_examples/cw_example_cifar10_12.png" alt="CW Example 4" width="320"/>
 </p>
+
+**Links:**
+- [Official page](https://www.cs.toronto.edu/~kriz/cifar.html)
+- [Paper](https://www.cs.toronto.edu/~kriz/learning-features-2009-TR.pdf)
 
 **Overview:**
 - **Classes:** 10 (airplane, automobile, bird, cat, deer, dog, frog, horse, ship, truck)
