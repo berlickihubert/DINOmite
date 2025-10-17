@@ -13,8 +13,8 @@ from utils.save_example import save_images_side_by_side_with_logits
 
 print("Loading CIFAR-10 test dataset...")
 
-project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
-data_path = os.path.join(project_root, 'data')
+project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+data_path = os.path.join(project_root, "data")
 os.makedirs(data_path, exist_ok=True)
 
 dataset = torchvision.datasets.CIFAR10(
@@ -31,11 +31,20 @@ model = model.to(device)
 model.eval()
 
 CIFAR10_CLASSES = [
-    "airplane", "automobile", "bird", "cat", "deer",
-    "dog", "frog", "horse", "ship", "truck",
+    "airplane",
+    "automobile",
+    "bird",
+    "cat",
+    "deer",
+    "dog",
+    "frog",
+    "horse",
+    "ship",
+    "truck",
 ]
 
-def pgd_attack(model, img, label, eps=8/255, alpha=2/255, steps=40):
+
+def pgd_attack(model, img, label, eps=8 / 255, alpha=2 / 255, steps=40):
     adv_img = img.clone().detach()
     original_img = img.clone().detach()
 
@@ -50,6 +59,7 @@ def pgd_attack(model, img, label, eps=8/255, alpha=2/255, steps=40):
         eta = torch.clamp(adv_img - original_img, min=-eps, max=eps)
         adv_img = torch.clamp(original_img + eta, min=0, max=1)
     return adv_img.detach()
+
 
 attack_results = []
 for _ in tqdm(range(15), desc="Generating PGD examples"):
@@ -80,8 +90,12 @@ for _ in tqdm(range(15), desc="Generating PGD examples"):
     if og_pred != adv_pred:
         attack_results.append(f"{CIFAR10_CLASSES[og_pred]} -> {CIFAR10_CLASSES[adv_pred]}")
         save_images_side_by_side_with_logits(
-            img.squeeze(0), adv_img.squeeze(0), og_logits, adv_logits,
-            "Original (left) vs Adversarial PGD (right)", SAVE_PATH
+            img.squeeze(0),
+            adv_img.squeeze(0),
+            og_logits,
+            adv_logits,
+            "Original (left) vs Adversarial PGD (right)",
+            SAVE_PATH,
         )
 
 if attack_results:
