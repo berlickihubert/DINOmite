@@ -3,7 +3,10 @@ from torchvision.transforms import ToPILImage
 
 to_pil = ToPILImage()
 
-def save_images_side_by_side_with_logits(og_img, adv_img, og_logits, adv_logits, caption, save_path):
+
+def save_images_side_by_side_with_logits(
+    og_img, adv_img, og_logits, adv_logits, caption, save_path
+):
     og_img = to_pil(og_img) if not isinstance(og_img, Image.Image) else og_img
     adv_img = to_pil(adv_img) if not isinstance(adv_img, Image.Image) else adv_img
 
@@ -30,10 +33,10 @@ def save_images_side_by_side_with_logits(og_img, adv_img, og_logits, adv_logits,
 
     try:
         font_path = "arial.ttf"
-        font = ImageFont.truetype(font_path, 20)
+        ImageFont.truetype(font_path, 20)
         caption_font = ImageFont.truetype(font_path, 28)
     except IOError:
-        font = ImageFont.load_default()
+        ImageFont.load_default()
         caption_font = ImageFont.load_default()
 
     caption_bbox = draw.textbbox((0, 0), caption, font=caption_font)
@@ -50,15 +53,22 @@ def save_images_side_by_side_with_logits(og_img, adv_img, og_logits, adv_logits,
     result_img.paste(og_img_resized, (og_x, og_y))
     result_img.paste(adv_img_resized, (adv_x, adv_y))
 
-
     try:
         logits_font = ImageFont.truetype(font_path, 14)
     except Exception:
         logits_font = ImageFont.load_default()
 
     cifar10_classes = [
-        "airplane", "automobile", "bird", "cat", "deer",
-        "dog", "frog", "horse", "ship", "truck"
+        "airplane",
+        "automobile",
+        "bird",
+        "cat",
+        "deer",
+        "dog",
+        "frog",
+        "horse",
+        "ship",
+        "truck",
     ]
 
     def draw_logits_and_classes(x, logits, max_idx, y_start):
@@ -89,4 +99,3 @@ def save_images_side_by_side_with_logits(og_img, adv_img, og_logits, adv_logits,
 
     result_img.save(save_path)
     print(f"Saved fixed size (1280x720) image to {save_path}")
-

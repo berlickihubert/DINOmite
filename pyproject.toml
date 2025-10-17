@@ -15,10 +15,7 @@ dependencies = [
 ]
 
 [dependency-groups]
-dev = [
-    "pre-commit>=4.3.0",
-    "ruff>=0.12.8",
-]
+dev = ["pre-commit>=4.3.0", "ruff>=0.12.8"]
 
 [tool.uv.sources]
 torch = [
@@ -45,4 +42,4 @@ explicit = true
 line-length = 100
 
 [tool.ruff.format]
-quote-style = "single"
+quote-style = "double"
