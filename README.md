@@ -24,6 +24,16 @@ A project for adversarial robustness testing using DINOv3 vision transformer mod
     <img src="adversarial_examples/fgsm_example_cifar10_4.png" alt="FGSM Example 4" width="320"/>
 </p>
 
+**Adversarial examples generated on CIFAR-10 using the PGD attack:**
+
+<p align="center">
+	<img src="adversarial_examples/pgd_example_cifar10_3.png" alt="PGD Example 1" width="320"/>
+	<img src="adversarial_examples/pgd_example_cifar10_7.png" alt="PGD Example 2" width="320"/>
+	<img src="adversarial_examples/pgd_example_cifar10_9.png" alt="PGD Example 3" width="320"/>
+    <img src="adversarial_examples/pgd_example_cifar10_14.png" alt="PGD Example 4" width="320"/>
+</p>
+
+
 **Links:**
 
 - [Official page](https://www.cs.toronto.edu/~kriz/cifar.html)
