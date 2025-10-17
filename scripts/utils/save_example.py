@@ -98,4 +98,4 @@ def save_images_side_by_side_with_logits(
     draw_logits_and_classes(adv_x, adv_logits, adv_max_idx, logits_y)
 
     result_img.save(save_path)
-    print(f"Saved fixed size (1280x720) image to {save_path}")
+    # print(f"Saved fixed size (1280x720) image to {save_path}")

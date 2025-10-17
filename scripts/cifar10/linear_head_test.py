@@ -22,7 +22,7 @@ def test_classifier():
     correct = 0
     total = 0
 
-    print("🧪 Testing classifier...")
+    print("Testing classifier...")
     with torch.no_grad():
         for images, labels in tqdm(test_loader, desc="Testing"):
             logits = model(images)
@@ -31,7 +31,7 @@ def test_classifier():
             correct += (predicted == labels).sum().item()
 
     accuracy = 100 * correct / total
-    print(f"✅ Test Accuracy: {accuracy:.2f}% ({correct}/{total})")
+    print(f"Test Accuracy: {accuracy:.2f}% ({correct}/{total})")
     return accuracy
 
 

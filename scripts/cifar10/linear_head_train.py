@@ -23,14 +23,14 @@ test_dataset = torchvision.datasets.CIFAR10(
 train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=32, shuffle=True)
 test_loader = torch.utils.data.DataLoader(test_dataset, batch_size=32, shuffle=False)
 
-print(f"📊 Train: {len(train_dataset)} samples")
-print(f"📊 Test: {len(test_dataset)} samples")
+print(f"Train: {len(train_dataset)} samples")
+print(f"Test: {len(test_dataset)} samples")
 
 # Load DINOv3 model
-print("🔄 Loading DINOv3 model...")
+print("Loading DINOv3 model...")
 model = AutoModel.from_pretrained("facebook/dinov3-vits16-pretrain-lvd1689m")
 processor = AutoImageProcessor.from_pretrained("facebook/dinov3-vits16-pretrain-lvd1689m")
-print("✅ Model loaded successfully")
+print("Model loaded successfully")
 
 # Linear classifier
 classifier = nn.Linear(384, 10)
@@ -46,7 +46,7 @@ if checkpoints:
     classifier.load_state_dict(checkpoint["model"])
     optimizer.load_state_dict(checkpoint["optimizer"])
     start_epoch = checkpoint["epoch"] + 1
-    print(f"🔄 Resumed from epoch {start_epoch}")
+    print(f"Resumed from epoch {start_epoch}")
 
 # Training
 print("Starting training...")
@@ -95,4 +95,4 @@ print("\nSaving model...")
 torch.save(
     classifier.state_dict(), "../../linear_head_classification/models/cifar10_linear_classifier.pth"
 )
-print("✅ Model saved to ../../linear_head_classification/models/cifar10_linear_classifier.pth")
+print("Model saved to ../../linear_head_classification/models/cifar10_linear_classifier.pth")

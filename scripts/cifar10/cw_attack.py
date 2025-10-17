@@ -5,6 +5,7 @@ import torch.optim as optim
 import sys
 import os
 import random
+from tqdm import tqdm
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from linear_head_model import DinoWithLinearHead
@@ -21,6 +22,19 @@ model = DinoWithLinearHead("../../models/cifar10_linear_classifier.pth")
 model = model.to(device)
 model.eval()
 
+CIFAR10_CLASSES = [
+    "airplane",
+    "automobile",
+    "bird",
+    "cat",
+    "deer",
+    "dog",
+    "frog",
+    "horse",
+    "ship",
+    "truck",
+]
+
 
 def carlini_wagner_attack(
     model, img, original_label, target_label, c=4e-2, kappa=0, max_iter=500, learning_rate=1e-2
@@ -30,7 +44,7 @@ def carlini_wagner_attack(
 
     optimizer = optim.Adam([w], lr=learning_rate)
 
-    for step in range(max_iter):
+    for _ in range(max_iter):
         optimizer.zero_grad()
         adv_img = 0.5 * (torch.tanh(w) + 1)
 
@@ -46,19 +60,13 @@ def carlini_wagner_attack(
 
         loss.backward()
         optimizer.step()
-        with torch.no_grad():
-            pred = torch.argmax(logits, dim=1)
-        if step % 50 == 0 or step == max_iter - 1:
-            print(
-                f"Step {step}: Loss={loss.item():.4f}, f_loss={f_loss.item():.4f}, l2dist={l2dist.item():.4f}, Predicted={pred.item()}, Target={target_label.item()}"
-            )
 
     return adv_img.detach()
 
 
-for _ in range(15):
+attack_results = []
+for _ in tqdm(range(15), desc="Generating C&W examples"):
     img, label = dataset[random.randint(0, len(dataset) - 1)]
-    print(f"Original label: {label}")
     img = img.unsqueeze(0).to(device)
     original_label = torch.tensor([label]).to(device)
     target_class = random.choice([i for i in range(10) if i != label])
@@ -85,6 +93,7 @@ for _ in range(15):
     og_pred = int(og_logits.argmax())
     adv_pred = int(adv_logits.argmax())
     if og_pred != adv_pred:
+        attack_results.append(f"{CIFAR10_CLASSES[og_pred]} -> {CIFAR10_CLASSES[adv_pred]}")
         save_images_side_by_side_with_logits(
             img.squeeze(0),
             adv_img.squeeze(0),
@@ -93,3 +102,12 @@ for _ in range(15):
             "Original (left) vs Adversarial (right)",
             SAVE_PATH,
         )
+
+print("Carlini-Wagner (C&W) attack examples generated.")
+if attack_results:
+    print("Successful attacks:")
+    for result in attack_results:
+        print(f"  - {result}")
+print(
+    f"Examples saved in: {os.path.abspath(os.path.join(os.path.dirname(__file__), '../../adversarial_examples'))}"
+)
