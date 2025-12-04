@@ -31,7 +31,6 @@ def evaluate_model(model, dataloader, device, attack_fn=None, desc="Evaluating")
     correct = 0
     total = 0
     
-    # Limit evaluation for speed
     max_batches = 10 
     
     pbar = tqdm(dataloader, desc=desc, total=max_batches)

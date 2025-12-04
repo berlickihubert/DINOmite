@@ -34,6 +34,16 @@ A project for adversarial robustness testing using DINOv3 vision transformer mod
 </p>
 
 
+**Robustness Training on PGD Attack Results**
+
+<p align="center">
+	<img src="adversarial_examples/accuracy_plot.png" alt="PGD Example 1"/>
+	<img src="adversarial_examples/loss_plot.png" alt="PGD Example 2"/>
+</p>
+
+As you can see, after 100 epochs, the model achieved approximately 40% accuracy in correctly classifying adversarial images, compared to 0% for the model without this type of training.
+
+
 **Links:**
 
 - [Official page](https://www.cs.toronto.edu/~kriz/cifar.html)
