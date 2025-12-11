@@ -4,7 +4,7 @@
 \documentclass[a1paper,portrait,fontscale=0.54]{baposter}
 
 % --- MARGINS ---
-\geometry{top=2.5cm, bottom=2.5cm, left=1cm, right=1cm}
+\geometry{top=2cm, bottom=2.5cm, left=1cm, right=1cm}
 \setlength{\voffset}{1cm}
 % ----------------------------------
 
@@ -49,7 +49,7 @@
   grid=false,
   columns=3,
   colspacing=4mm,
-  headerheight=0.1\textheight,
+  headerheight=0.14\textheight,
   background=plain,
   bgColorOne=white,
   eyecatcher=true,
@@ -69,9 +69,13 @@
 {
    \begin{minipage}[c]{0.15\textwidth}
      \centering
-     \includegraphics[height=0.35\headerheight]{images/logos/UWr_Logo.jpg} \\
+     \includegraphics[height=0.22\headerheight]{images/logos/UWr_Logo.jpg} \\
      \vspace{0.2em}
-     \includegraphics[height=0.32\headerheight]{images/logos/KSI_Logo.png}
+     \includegraphics[height=0.20\headerheight]{images/logos/KSI_Logo.png} \\
+     \vspace{0.2em}
+     \includegraphics[height=0.18\headerheight]{images/logos/Arqus.png}
+     \vspace{0.2em}
+     \includegraphics[height=0.18\headerheight]{images/logos/Research_University_Horizontal.png}
    \end{minipage}
 }
 % --- Tytuł ---
@@ -229,7 +233,7 @@ $$ \min_{\delta} \|\delta\|_2 + c \cdot f(x+\delta) $$
 
 % PRZENIESIONE: Defense Strategies
 \begin{posterbox}[name=defenses, column=2, row=0]{Defense Strategies}
-Standard training yields 0\% robustness. We compare:
+Standard training yields 0\% robustness. We evaluate three state-of-the-art defenses:
 
 \subsection*{PGD-AT (Adversarial Training)}
 Min-Max game training on PGD examples.
