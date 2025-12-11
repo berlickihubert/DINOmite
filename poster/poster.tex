@@ -101,10 +101,9 @@
 % ============================================================================
 \begin{posterbox}[name=references, column=0, span=3, above=bottom]{References}
 \begin{enumerate}
-    \item Goodfellow et al. (2015). \textit{Explaining and Harnessing Adversarial Examples}. arXiv:1412.6572
-    \item Moosavi-Dezfooli et al. (2016). \textit{DeepFool: A Simple and Accurate Method to Fool Deep Neural Networks}. arXiv:1511.04599
     \item Madry et al. (2018). \textit{Towards Deep Learning Models Resistant to Adversarial Attacks}. arXiv:1706.06083
     \item Carlini \& Wagner (2017). \textit{Towards Evaluating the Robustness of Neural Networks}. arXiv:1608.04644
+    \item Goodfellow et al. (2015). \textit{Explaining and Harnessing Adversarial Examples}. arXiv:1412.6572
     \item Zhang et al. (2019). \textit{Theoretically Principled Trade-off between Robustness and Accuracy}. arXiv:1901.08573
     \item Kurakin et al. (2017). \textit{Adversarial Examples in the Physical World}. arXiv:1607.02533
     \item Wang et al. (2020). \textit{Improving Adversarial Robustness Requires Revisiting Data Augmentation and Training}. OpenReview: rklOg6EFwS
@@ -144,7 +143,7 @@ $$ \max_{\delta} L(f(x + \delta), y) \quad \text{s.t.} \quad \|\delta\|_\infty \
 \begin{itemize}
     \item \textbf{White-box:} Full access to gradients.
     \item \textbf{Constraint:} $\epsilon = 8/255$.
-    \item \textbf{Goal:} Untargeted misclassification.
+    \item \textbf{Goal:} Misclassification with minimal perturbation.
 \end{itemize}
 \end{posterbox}
 
@@ -164,7 +163,7 @@ $$ \max_{\delta} L(f(x + \delta), y) \quad \text{s.t.} \quad \|\delta\|_\infty \
 \subsection*{Evaluation}
 \begin{itemize}
     \item \textbf{Metric:} Clean vs. Robust Accuracy (PGD-40).
-    \item \textbf{Epsilon:} $\epsilon \in \{0, \dots, 8/255\}$.
+    \item \textbf{Delta:} $\delta \in \{0, \dots, 8/255\}$.
     \item \textbf{Attacks:} FGSM, PGD, C\&W.
     \item \textbf{Defenses:} PGD-AT, TRADES.
 \end{itemize}
