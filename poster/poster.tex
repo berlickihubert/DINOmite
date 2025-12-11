@@ -4,10 +4,8 @@
 \documentclass[a1paper,portrait,fontscale=0.54]{baposter}
 
 % --- MARGINS ---
-% Dodajemy pakiet geometry, aby wymusić marginesy.
-% Ustawiamy top=3cm zgodnie z prośbą.
-% \usepackage{geometry}
-% \geometry{paperwidth=594mm,paperheight=841mm, top=3cm, bottom=1.5cm, left=1.5cm, right=1.5cm}
+\geometry{top=2.5cm, bottom=2.5cm, left=1cm, right=1cm}
+\setlength{\voffset}{1cm}
 % ----------------------------------
 
 % Encoding and fonts for proper Polish diacritics
@@ -91,7 +89,7 @@
 % --- Logo Prawe ---
 {
   \vspace{0.5em}
-  \includegraphics[height=0.7\headerheight]{images/logos/qrcode.png}
+  \includegraphics[height=1\headerheight]{images/logos/qrcode.png}
 }
 
 % ============================================================================
@@ -179,6 +177,8 @@ $$ \max_{\delta} L(f(x + \delta), y) \quad \text{s.t.} \quad \|\delta\|_\infty \
 \begin{itemize}
     \item Evaluating Certified Robustness.
     \item Scaling to ImageNet-1k.
+    \item Testing diverse attack methods (e.g., AutoAttack).
+    \item Exploring advanced defenses (e.g., MART).
 \end{itemize}
 \end{posterbox}
 
