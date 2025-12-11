@@ -241,7 +241,14 @@ $$ \min_\theta \mathbb{E} [L(f(x),y) + \beta \cdot \text{KL}(f(x) \| f(x+\delta_
 \textit{Result: Smoother decision boundaries.}
 \end{posterbox}
 
-\begin{posterbox}[name=results, column=2, below=defenses]{Quantitative Results}
+\begin{posterbox}[name=comparison, column=2, below=defenses]{Defense Results}
+\centering
+\includegraphics[width=0.95\linewidth]{images/results/accuracy_plot_trades.png}
+\includegraphics[width=0.95\linewidth]{images/results/accuracy_plot_pgd-at.png}
+\captionof{figure}{Robustness and accuracy across defense methods.}
+\end{posterbox}
+
+\begin{posterbox}[name=results, column=2, below=comparison]{Quantitative Results}
 Comparison on CIFAR-10 ($\epsilon=8/255$).
 
 \begin{center}
@@ -255,13 +262,6 @@ TRADES & 81.5\% & \textbf{68.0\%} & \textbf{60.0\%} \\
 \bottomrule
 \end{tabular}
 \end{center}
-\end{posterbox}
-
-\begin{posterbox}[name=comparison, column=2, below=results]{Defense Results}
-\centering
-\includegraphics[width=0.95\linewidth]{images/results/accuracy_plot_trades.png}
-\includegraphics[width=0.95\linewidth]{images/results/accuracy_plot_pgd-at.png}
-\captionof{figure}{Robustness and accuracy across defense methods.}
 \end{posterbox}
 
 \end{poster}
