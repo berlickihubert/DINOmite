@@ -80,11 +80,11 @@
 }
 % --- Tytuł ---
 {\color{nustblue}\bf
-\Huge DINOmite: Adversarial Robustness \\of DINOv3 Vision Transformers
+\Huge DINOmite: Adversarial Robustness \\[0.3em] of DINOv3 Vision Transformers
 }
 % --- Subtitle: Authors (alphabetical by surname) ---
 {\color{black}\large
-  \vspace{0.8em}
+  \vspace{2.5em}
     \centering Wojciech Aszkie\l{}owicz$^*$ \;\; Hubert Berlicki$^*$ \;\; Jan Burdzicki$^*$ \;\; Igor Jakus$^*$ \\[0.4em]
   {\small w.aszkielowicz@proton.me \;\; berlickihubert@gmail.com \;\; janburdzicki@gmail.com \;\; igorjakus@protonmail.com} \\[0.5em]
     Institute of Computer Science, University of Wroc\l{}aw \\[0.3em]
@@ -159,7 +159,6 @@ $$ \max_{\delta} L(f(x + \delta), y) \quad \text{s.t.} \quad \|\delta\|_\infty \
 \subsection*{Datasets}
 \begin{itemize}
     \item \textbf{CIFAR-10:} Primary benchmark.
-    \item \textbf{GTSRB:} Traffic signs (Safety-critical).
 \end{itemize}
 
 \subsection*{Evaluation}
@@ -172,15 +171,15 @@ $$ \max_{\delta} L(f(x + \delta), y) \quad \text{s.t.} \quad \|\delta\|_\infty \
 \begin{posterbox}[name=conclusions, column=0, below=experiments, above=references]{Conclusions}
 \subsection*{Main Takeaways}
 \begin{itemize}
-    \item \textbf{Vulnerability:} DINOv3 has no inherent robustness against gradient attacks.
-    \item \textbf{Defense:} TRADES successfully recovers 60\% accuracy under strong PGD attacks.
-    \item \textbf{Trade-off:} The robustness gain justifies the small drop in clean accuracy.
+    \item \textbf{Adversarial Training Effectiveness:} DINO-pretrained ViTs are vulnerable to attacks like PGD. However, defenses like PGD-AT or TRADES significantly enhance robustness, mirroring Madry et al.'s findings for CNNs.
+    \item \textbf{Trade-offs:} Increased robustness introduces a performance penalty on clean data, causing a noticeable drop in standard accuracy.
+    \item \textbf{Visual Differences:} C\&W attacks generate perturbations that are less perceptible to the human eye than those produced by PGD and FGSM.
 \end{itemize}
 
 \subsection*{Future Work}
 \begin{itemize}
     \item Evaluating Certified Robustness.
-    \item Scaling to ImageNet-1k.
+    \item Scaling to ImageNet-1k and GTSRB.
     \item Testing diverse attack methods (e.g., AutoAttack).
     \item Exploring advanced defenses (e.g., MART).
 \end{itemize}
@@ -257,13 +256,13 @@ $$ \min_\theta \mathbb{E} [\underbrace{L(f(x),y)}_{\text{Natural}} + \beta \cdot
 Comparison on CIFAR-10 ($\epsilon=8/255$).
 
 \begin{center}
-\begin{tabular}{lccc}
+\begin{tabular}{lcc}
 \toprule
-\textbf{Model} & \textbf{Clean} & \textbf{FGSM} & \textbf{PGD} \\
+\textbf{Model} & \textbf{Clean} & \textbf{PGD} \\
 \midrule
-Standard & \textbf{85.0\%} & 45.0\% & 25.0\% \\
-PGD-AT & 82.0\% & 65.0\% & 55.0\% \\
-TRADES & 81.5\% & \textbf{68.0\%} & \textbf{60.0\%} \\
+Standard & \textbf{96.56\%} & 0.00\% \\
+PGD-AT & 77.19\% & \textbf{40.62\%} \\
+TRADES & 81.25\% & 35.94\% \\
 \bottomrule
 \end{tabular}
 \end{center}
