@@ -2,6 +2,14 @@
 % Plik: poster.tex
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \documentclass[a1paper,portrait,fontscale=0.54]{baposter}
+
+% --- MARGINS ---
+% Dodajemy pakiet geometry, aby wymusić marginesy.
+% Ustawiamy top=3cm zgodnie z prośbą.
+% \usepackage{geometry}
+% \geometry{paperwidth=594mm,paperheight=841mm, top=3cm, bottom=1.5cm, left=1.5cm, right=1.5cm}
+% ----------------------------------
+
 % Encoding and fonts for proper Polish diacritics
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -90,7 +98,6 @@
 % REFERENCJE (Kotwica na dole)
 % ============================================================================
 \begin{posterbox}[name=references, column=0, span=3, above=bottom]{References}
-\begin{multicols}{3}
 \begin{enumerate}
     \item Goodfellow et al. (2015). \textit{Explaining and Harnessing Adversarial Examples}. arXiv:1412.6572
     \item Moosavi-Dezfooli et al. (2016). \textit{DeepFool: A Simple and Accurate Method to Fool Deep Neural Networks}. arXiv:1511.04599
@@ -100,7 +107,6 @@
     \item Kurakin et al. (2017). \textit{Adversarial Examples in the Physical World}. arXiv:1607.02533
     \item Wang et al. (2020). \textit{Improving Adversarial Robustness Requires Revisiting Data Augmentation and Training}. OpenReview: rklOg6EFwS
 \end{enumerate}
-\end{multicols}
 \end{posterbox}
 
 % ============================================================================
