@@ -255,16 +255,11 @@ TRADES & 81.5\% & \textbf{68.0\%} & \textbf{60.0\%} \\
 \end{center}
 \end{posterbox}
 
-\begin{posterbox}[name=comparison, column=2, below=results]{Model Comparison}
+\begin{posterbox}[name=comparison, column=2, below=results]{Defense Results}
 \centering
-\includegraphics[width=0.95\linewidth]{images/results/attack_comparison_original.png}
-\captionof{figure}{Robustness across attack methods.}
-\end{posterbox}
-
-\begin{posterbox}[name=curves, column=2, below=comparison, above=references]{Robustness Curves}
-\centering
-\includegraphics[width=0.95\linewidth]{images/results/robustness_comparison_pgd.png}
-\captionof{figure}{Accuracy degradation vs. $\epsilon$. TRADES (Green) maintains stability longer than Standard (Blue).}
+\includegraphics[width=0.95\linewidth]{images/results/accuracy_plot_trades.png}
+\includegraphics[width=0.95\linewidth]{images/results/accuracy_plot_pgd-at.png}
+\captionof{figure}{Robustness and accuracy across defense methods.}
 \end{posterbox}
 
 \end{poster}
