@@ -8,11 +8,15 @@ dependencies = [
     "joblib>=1.5.1",
     "jupyter>=1.1.1",
     "matplotlib>=3.10.5",
+    "pandas>=2.0.0",
+    "pillow>=10.0.0",
     "scikit-learn>=1.7.1",
     "torch>=2.8.0",
     "torchvision>=0.23.0",
     "transformers",
 ]
+
+# uv add git+https://github.com/fra31/auto-attack
 
 [dependency-groups]
 dev = ["pre-commit>=4.3.0", "ruff>=0.12.8"]
