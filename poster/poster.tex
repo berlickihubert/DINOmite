@@ -1,0 +1,480 @@
+%  This is free software: you can redistribute it and/or modify
+%  it under the terms of the GNU General Public License as published by
+%  the Free Software Foundation, either version 3 of the License, or
+%  (at your option) any later version.
+%
+%  This is distributed in the hope that it will be useful,
+%  but WITHOUT ANY WARRANTY; without even the implied warranty of
+%  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%  GNU General Public License for more details.
+%
+%  You can find the GNU General Public License at <http://www.gnu.org/licenses/>.
+\documentclass[a1paper,portrait,fontscale=0.54]{baposter}
+\usepackage{tikz}
+\usepackage{graphicx, svg}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{multicol}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Language, Encoding and Fonts
+% http://en.wikibooks.org/wiki/LaTeX/Internationalization
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Select encoding of your inputs. Depends on
+% your operating system and its default input
+% encoding. Typically, you should use
+%   Linux  : utf8 (most modern Linux distributions)
+%            latin1
+%   Windows: ansinew
+%            latin1 (works in most cases)
+%   Mac    : applemac
+% Notice that you,fontscale=0.833 can manually change the input
+% encoding of your files by selecting "save as"
+% an select the desired input encoding.
+\usepackage[utf8]{inputenc}
+% Make latex understand and use the typographic
+% rules of the language used in the document.
+\usepackage[english]{babel}
+% Use the vector font Latin Modern which is going
+% to be the default font in latex in the future.
+\usepackage{helvet}
+% Change the default font family from roman to sans serif
+\renewcommand{\familydefault}{\sfdefault} % for text
+\usepackage[helvet]{sfmath} % for math
+% Choose the font encoding
+\usepackage[T1]{fontenc}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Graphics and Tables
+% http://en.wikibooks.org/wiki/LaTeX/Importing_Graphics
+% http://en.wikibooks.org/wiki/LaTeX/Tables
+% http://pgfplots.sourceforge.net/
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% You cannot use floats in the baposter theme.
+% We therefore load the caption package which provides
+% the command \captionof
+% Set up how figure and table captions are displayed
+\usepackage{caption}
+\captionsetup{
+  font=small,% set font size to footnotesize
+  labelfont=bf % bold label (e.g., Figure 3.2) font
+}
+% Make the standard latex tables look so much better
+\usepackage{array,booktabs}
+% For creating beautiful plots
+\usepackage{pgfplots}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Mathematics
+% http://en.wikibooks.org/wiki/LaTeX/Mathematics
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Defines new environments such as equation,
+% align and split
+\usepackage{amsmath}
+% Adds new math symbols
+\usepackage{amssymb}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Colours
+% http://en.wikibooks.org/wiki/LaTeX/Colors
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\selectcolormodel{RGB}
+% define the three blue colors
+\definecolor{nustblue}{RGB}{0,102,158}% dark blue
+\definecolor{nustblue1}{RGB}{0, 189, 181} % light blue
+\definecolor{nustblue2}{RGB}{0,153,237} % lighter blue
+% \definecolor{nustblue3}{RGB}{100,100,255}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Lists
+% http://en.wikibooks.org/wiki/LaTeX/List_Structures
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Easier configuration of lists
+\usepackage{enumitem}
+%configure itemize
+\setlist{%
+  topsep=0pt,% set space before and after list
+  noitemsep,% remove space between items
+  labelindent=\parindent,% set the label indentation to the paragraph indentation
+  leftmargin=*,% remove the left margin
+  font=\color{nustblue}\normalfont, %set the colour of all bullets, numbers and descriptions to nustblue
+}
+% use set<itemize,enumerate,description> if you have an older latex distribution
+\setitemize[1]{label={\raise1.25pt\hbox{$\blacktriangleright$}}}
+\setitemize[2]{label={\scriptsize\raise1.25pt\hbox{$\blacktriangleright$}}}
+\setitemize[3]{label={\raise1.25pt\hbox{$\star$}}}
+\setitemize[4]{label={-}}
+%\setenumerate[1]{label={\theenumi.}}
+%\setenumerate[2]{label={(\theenumii)}}
+%\setenumerate[3]{label={\theenumiii.}}
+%\setenumerate[4]{label={\theenumiv.}}
+%\setdescription{font=\color{nustblue}\normalfont\bfseries}
+
+% use setlist[<itemize,enumerate,description>,<level>] if you have a newer latex distribution
+%\setlist[itemize,1]{label={\raise1.25pt\hbox{$\blacktriangleright$}}}
+%\setlist[itemize,2]{label={\scriptsize\raise1.25pt\hbox{$\blacktriangleright$}}}
+%\setlist[itemize,3]{label={\raise1.25pt\hbox{$\star$}}}
+%\setlist[itemize,4]{label={-}}
+%\setlist[enumerate,1]{label={\theenumi.}}
+%\setlist[enumerate,2]{label={(\theenumii)}}
+%\setlist[enumerate,3]{label={\theenumiii.}}
+%\setlist[enumerate,4]{label={\theenumiv.}}
+%\setlist[description]{font=\color{nustblue}\normalfont\bfseries}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Misc
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% change/remove some names
+\addto{\captionsenglish}{
+  %remove the title of the bibliograhpy
+  \renewcommand{\refname}{\vspace{-0.7em}}
+  %change Figure to Fig. in figure captions
+  \renewcommand{\figurename}{Fig.}
+}
+% create links
+\usepackage{url}
+%note that the hyperref package is currently incompatible with the baposter class
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Macros
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\alert}[1]{{\color{nustblue}#1}}
+\newcommand{\pro}{\includegraphics[scale=0.02]{images/pro.png}}
+\newcommand{\con}{\includegraphics[scale=0.02]{images/con.png}}
+\newcommand{\undecided}{\includegraphics[scale=0.004]{images/procon.png}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Document Start
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Some changes that cannot be made in the preamble
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% set the background of the poster
+\background{
+  \begin{tikzpicture}[remember picture,overlay]%
+    %the poster background color
+    \fill[fill=nustblue2] (current page.north west) rectangle (current page.south east);
+    %the header
+    \fill [fill=nustblue] (current page.north west) rectangle ([yshift=-\headerheight] current page.north east);
+  \end{tikzpicture}
+}
+% if you want to reduce the space before and after equations, use and adjust
+% the following lines
+%\addtolength{\abovedisplayskip}{-2mm}
+%\addtolength{\belowdisplayskip}{-2mm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% General poster setup
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{poster}{
+  %general options for the poster
+  grid=false,
+  columns=3,
+%  colspacing=4.2mm,
+  headerheight=0.1\textheight,
+  background=none,
+%  bgColorOne=red!42, %is used when background != user and none
+%  bgColortwo=green!42, %is used when background is shaded
+  eyecatcher=true,
+  %posterbox options
+  headerborder=closed,
+  borderColor=nustblue,
+  headershape=rectangle,
+  headershade=plain,
+  headerColorOne=nustblue,
+%  headerColortwo=yellow!42, %is used when the header background is shaded
+  textborder=rectangle,
+  boxshade=plain,
+  boxColorOne=white,
+%  boxColorTwo=cyan!42,%is used when the text background is shaded
+  headerFontColor=white,
+  headerfont=\Large\sf\bf,
+  linewidth=1pt
+}
+%the Eye Catcher (the logo on the left)
+{
+   %this can be commented out or replaced by a company/department logo
+   % Logos UWr and KSI - one below the other
+   \begin{minipage}[c]{0.15\textwidth}
+     \centering
+     \includegraphics[height=0.35\headerheight]{images/UWr_Logo.jpg} \\
+     \vspace{0.2em}
+     \includegraphics[height=0.32\headerheight]{images/KSI_Logo.png}
+   \end{minipage}
+   % Old version (side by side) - commented out:
+   % \includegraphics[height=0.35\headerheight]{images/UWr_Logo.jpg}
+   % \hspace{.5cm}
+   % \includegraphics[height=0.35\headerheight]{images/KSI_Logo.png}
+}
+%the poster title
+{\color{nustblue}\bf
+\Huge DINOmite: Adversarial Robustness of DINOv3 Vision Transformers % \\ \vspace{1mm}\Large {Subtitle}
+}
+%the author(s)
+{\large
+  \vspace{1em}
+  \begin{minipage}[t]{0.18\textwidth}
+    \centering
+    Jan Burdzicki$^*$ \\
+    {\small jan.burdzicki@cs.uni.wroc.pl}
+  \end{minipage}
+  \hspace{0.2cm}
+  \begin{minipage}[t]{0.18\textwidth}
+    \centering
+    Igor Jakus$^*$ \\
+    {\small igor.jakus@cs.uni.wroc.pl}
+  \end{minipage}
+  \hspace{0.2cm}
+  \begin{minipage}[t]{0.18\textwidth}
+    \centering
+    Hubert Berlicki$^*$ \\
+    {\small hubert.berlicki@cs.uni.wroc.pl}
+  \end{minipage}
+  \hspace{0.2cm}
+  \begin{minipage}[t]{0.25\textwidth}
+    \centering
+    Wojciech Aszkiełowicz$^*$ \\
+    {\small wojciech.aszkielowicz@cs.uni.wroc.pl}
+  \end{minipage}
+  \\[0.5em]
+  Institute of Computer Science, University of Wrocław \\[0.3em]
+  {\small $^*$Equal contribution}
+}
+%the logo (the logo on the right) - QR Code
+{
+  \vspace{0.5em}
+  \includegraphics[height=0.7\headerheight]{images/qrcode.png}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% the actual content of the poster begins here
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% ============================================================================
+% COLUMN 1
+% ============================================================================
+
+\begin{posterbox}[name=abstract, column=0, row=0]{Abstract}
+\textbf{Problem:} DINOv3 Vision Transformers achieve high accuracy but are vulnerable to adversarial attacks.
+
+\textbf{Contribution:} Comprehensive evaluation framework testing 5 attack methods (FGSM, PGD, BIM, C\&W, DeepFool) and 3 defense strategies (PGD-AT, TRADES, MART).
+
+\textbf{Key Results:}
+\begin{itemize}
+    \item Standard models: 85\% clean, 25\% robust (PGD)
+    \item With defense: 82\% clean, 60\% robust (TRADES)
+    \item Trade-off manageable with proper training
+\end{itemize}
+\end{posterbox}
+
+\begin{posterbox}[name=motivation, column=0, below=abstract]{Motivation}
+\subsection*{Why It Matters}
+\begin{itemize}
+    \item Safety-critical: autonomous vehicles, medical diagnosis
+    \item Real-world threats: adversarial examples work in physical world
+    \item Trust in AI: robust models essential for deployment
+\end{itemize}
+
+\subsection*{Research Questions}
+\begin{enumerate}
+    \item How robust are DINOv3 models?
+    \item Which defenses work best?
+    \item Accuracy vs robustness trade-off?
+\end{enumerate}
+\end{posterbox}
+
+\begin{posterbox}[name=problem, column=0, below=motivation]{Problem Definition}
+\subsection*{Adversarial Examples}
+$\min_{\delta} \|\delta\|_p$ s.t. $f(x + \delta) \neq f(x)$, $\|\delta\|_\infty \leq \epsilon$
+
+\subsection*{Threat Model}
+\begin{itemize}
+    \item White-box: full model access
+    \item L$\infty$ constraint: $\epsilon = 8/255$
+    \item Untargeted attacks
+\end{itemize}
+
+\subsection*{Metrics}
+\begin{itemize}
+    \item Clean Accuracy
+    \item Robust Accuracy
+    \item Attack Success Rate
+\end{itemize}
+\end{posterbox}
+
+% ============================================================================
+% COLUMN 2
+% ============================================================================
+
+\begin{posterbox}[name=attacks, column=1, row=0]{Attack Methods}
+\subsection*{FGSM}
+(Goodfellow et al., 2015)\\
+Single-step: $x_{adv} = x + \epsilon \cdot \text{sign}(\nabla_x L)$
+
+\subsection*{PGD}
+(Madry et al., 2018)\\
+Iterative FGSM with projection. \textbf{Strongest attack.}
+
+\subsection*{BIM}
+(Kurakin et al., 2017)\\
+ Iterative FGSM, smaller steps
+
+\subsection*{C\&W}
+(Carlini \& Wagner, 2017)\\
+ Optimization-based, L2 norm
+
+\subsection*{DeepFool}
+(Moosavi-Dezfooli et al., 2016)\\
+ Minimal perturbation to cross boundary
+\end{posterbox}
+
+\begin{posterbox}[name=defenses, column=1, below=attacks]{Defense Methods}
+\subsection*{PGD-AT}
+(Madry et al., 2018)\\
+ Train on PGD: $\min_\theta \mathbb{E}[\max_{\delta} L(f(x+\delta), y)]$
+
+\subsection*{TRADES}
+(Zhang et al., 2019)\\
+Trade-off: $L_{nat} + \beta \cdot KL(p_{adv} \| p_{nat})$
+
+\subsection*{MART}
+(Wang et al., 2020)\\
+Focus on misclassified examples
+\end{posterbox}
+
+\begin{posterbox}[name=examples, column=1, below=defenses]{Adversarial Examples}
+% PLACEHOLDER: Add images from adversarial_examples/
+% Uncomment and adjust paths:
+% \includegraphics[width=0.95\textwidth]{../adversarial_examples/pgd_example_cifar10_1.png}
+\begin{center}
+\textit{[PLACEHOLDER: Adversarial example images]}
+\end{center}
+
+\textit{Example: Original (left) vs PGD attack (right)}
+\end{posterbox}
+
+% ============================================================================
+% COLUMN 3
+% ============================================================================
+
+\begin{posterbox}[name=experiments, column=2, row=0]{Experimental Setup}
+\subsection*{Model}
+\begin{itemize}
+    \item DINOv3 ViT-S/16 (pretrained)
+    \item Linear head: 384 $\rightarrow$ num\_classes
+    \item Frozen backbone, trainable head
+\end{itemize}
+
+\subsection*{Datasets}
+\begin{itemize}
+    \item CIFAR-10 (primary)
+    \item GTSRB (safety-critical)
+    \item Tiny ImageNet
+\end{itemize}
+
+\subsection*{Evaluation}
+\begin{itemize}
+    \item 1000 test samples
+    \item $\epsilon \in \{0, 1/255, 2/255, 4/255, 8/255, 16/255\}$
+    \item Multiple seeds
+\end{itemize}
+\end{posterbox}
+
+\begin{posterbox}[name=results, column=2, below=experiments]{Results}
+% PLACEHOLDER: Add results table
+% Use: \input{results_table.tex} or manually create table
+\begin{center}
+% Uncomment to add table:
+% \begin{tabular}{lccc}
+% \toprule
+% Model & Clean & FGSM & PGD \\
+% \midrule
+% Original & 85.0 & 45.0 & 25.0 \\
+% PGD-AT & 82.0 & 65.0 & 55.0 \\
+% \bottomrule
+% \end{tabular}
+\textit{[PLACEHOLDER: Results table]}
+\end{center}
+
+\subsection*{Key Findings}
+\begin{enumerate}
+    \item Standard models: vulnerable (25\% robust)
+    \item PGD strongest attack
+    \item Defenses help: 60\% robust (TRADES)
+    \item Trade-off manageable
+\end{enumerate}
+\end{posterbox}
+
+\begin{posterbox}[name=curves, column=2, below=results]{Robustness Curves}
+% PLACEHOLDER: Add robustness curve plot
+% Uncomment and adjust path:
+% \includegraphics[width=0.95\textwidth]{../results/robustness_comparison_pgd.png}
+\begin{center}
+\textit{[PLACEHOLDER: Plot: Accuracy vs Epsilon]}
+\end{center}
+
+\textit{Shows how accuracy drops with increasing attack strength}
+\end{posterbox}
+
+% ============================================================================
+% BOTTOM SECTION (SPANS ALL COLUMNS)
+% ============================================================================
+
+\begin{posterbox}[name=comparison, column=0, below=problem, span=3]{Model Comparison}
+% PLACEHOLDER: Add comparison bar chart
+% Uncomment and adjust path:
+% \includegraphics[width=0.95\textwidth]{../results/attack_comparison_original.png}
+\begin{center}
+\textit{[PLACEHOLDER: Bar chart comparing models]}
+\end{center}
+
+\begin{itemize}
+    \item \textbf{Original:} High clean (85\%), low robust (25\%)
+    \item \textbf{PGD-AT:} Balanced (82\% / 55\%)
+    \item \textbf{TRADES:} Best robustness (81.5\% / 60\%)
+    \item \textbf{MART:} Good balance (81.8\% / 58\%)
+\end{itemize}
+\end{posterbox}
+
+\begin{posterbox}[name=conclusions, column=0, below=comparison, span=3]{Conclusions \& Future Work}
+\subsection*{Main Takeaways}
+\begin{itemize}
+    \item DINOv3 vulnerable without defense
+    \item Adversarial training effective (60\% robust)
+    \item Trade-off manageable
+    \item Framework ready for deployment
+\end{itemize}
+
+\subsection*{Future Work}
+\begin{itemize}
+    \item More datasets (GTSRB, Tiny ImageNet full)
+    \item Certified defenses
+    \item Ensemble methods
+    \item Real-world testing
+\end{itemize}
+\end{posterbox}
+
+\begin{posterbox}[name=references, column=0, below=conclusions, span=3]{References}
+\begin{multicols}{3}
+\begin{enumerate}
+    \item Goodfellow et al. (2015). \textit{arXiv:1412.6572}\\
+    \url{https://arxiv.org/abs/1412.6572}
+    \item Moosavi-Dezfooli et al. (2016). \textit{arXiv:1511.04599}\\
+    \url{https://arxiv.org/abs/1511.04599}
+    \item Kurakin et al. (2017). \textit{arXiv:1607.02533}\\
+    \url{https://arxiv.org/abs/1607.02533}
+    \item Carlini \& Wagner (2017). \textit{arXiv:1608.04644}\\
+    \url{https://arxiv.org/abs/1608.04644}
+    \item Madry et al. (2018). \textit{arXiv:1706.06083}\\
+    \url{https://arxiv.org/abs/1706.06083}
+    \item Zhang et al. (2019). \textit{arXiv:1901.08573}\\
+    \url{https://arxiv.org/abs/1901.08573}
+    \item Wang et al. (2020). \textit{OpenReview}\\
+    \url{https://openreview.net/pdf?id=rklOg6EFwS}
+\end{enumerate}
+\end{multicols}
+\end{posterbox}
+
+
+\end{poster}
+\end{document}
