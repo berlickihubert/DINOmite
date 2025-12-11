@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025/nixos.org) (preloaded format=pdflatex 1980.1.1)  11 DEC 2025 16:35
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025/nixos.org) (preloaded format=pdflatex 1980.1.1)  11 DEC 2025 16:47
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -350,11 +350,51 @@ Package: pgfpages 2011/01/05 ver 0.02
 \pgfpages@shipoutbox=\box69
 )
 \pgfpages@box@1=\box70
+) (/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/tex/latex/base/fontenc.sty
+Package: fontenc 2024/12/21 v2.1c Standard LaTeX package
+) (/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/tex/latex/base/inputenc.sty
+Package: inputenc 2024/02/08 v1.3d Input encoding file
+\inpenc@prehook=\toks32
+\inpenc@posthook=\toks33
+) (/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/tex/latex/lm/lmodern.sty
+Package: lmodern 2015/05/01 v1.6.1 Latin Modern Fonts
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> OT1/lmr/m/n on input line 22.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `normal'
+(Font)                  OML/cmm/m/it --> OML/lmm/m/it on input line 23.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
+(Font)                  OMS/cmsy/m/n --> OMS/lmsy/m/n on input line 24.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/cmex/m/n --> OMX/lmex/m/n on input line 25.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 26.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
+(Font)                  OML/cmm/b/it --> OML/lmm/b/it on input line 27.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  OMS/cmsy/b/n --> OMS/lmsy/b/n on input line 28.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/cmex/m/n --> OMX/lmex/m/n on input line 29.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 31.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
+(Font)                  OT1/cmss/m/n --> OT1/lmss/m/n on input line 32.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/cmr/m/it --> OT1/lmr/m/it on input line 33.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
+(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 34.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 35.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/cmss/bx/n --> OT1/lmss/bx/n on input line 36.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/cmr/bx/it --> OT1/lmr/bx/it on input line 37.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 38.
 ) (/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
  (/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
-\@emptytoks=\toks32
+\@emptytoks=\toks34
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
@@ -373,7 +413,7 @@ For additional information on amsmath, use the `?' option.
 Package: amstext 2024/11/17 v2.01 AMS text
  (/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks33
+\@emptytoks=\toks35
 \ex@=\dimen276
 )) (/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
@@ -411,21 +451,21 @@ LaTeX Info: Redefining \Relbar on input line 970.
 \dotsspace@=\muskip17
 \c@parentequation=\count325
 \dspbrk@lvl=\count326
-\tag@help=\toks34
+\tag@help=\toks36
 \row@=\count327
 \column@=\count328
 \maxfields@=\count329
-\andhelp@=\toks35
+\andhelp@=\toks37
 \eqnshift@=\dimen279
 \alignsep@=\dimen280
 \tagshift@=\dimen281
 \tagwidth@=\dimen282
 \totwidth@=\dimen283
 \lineht@=\dimen284
-\@envbody=\toks36
+\@envbody=\toks38
 \multlinegap=\skip78
 \multlinetaggap=\skip79
-\mathdisplay@stack=\toks37
+\mathdisplay@stack=\toks39
 LaTeX Info: Redefining \[ on input line 2949.
 LaTeX Info: Redefining \] on input line 2950.
 )
@@ -531,7 +571,7 @@ Package: array 2025/06/08 v2.6j Tabular extension package (FMi)
 \col@sep=\dimen310
 \ar@mcellbox=\box120
 \extrarowheight=\dimen311
-\NC@list=\toks38
+\NC@list=\toks40
 \extratabsurround=\skip83
 \backup@length=\skip84
 \ar@cellbox=\box121
@@ -557,22 +597,22 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 ) (/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/tex/latex/pgfplots/pgfplots.sty (/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/tex/generic/pgfplots/pgfplots.revision.tex)
 Package: pgfplots 2021/05/15 v1.18.1 Data Visualization (1.18.1)
  (/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/tex/generic/pgfplots/pgfplots.code.tex (/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/tex/generic/pgfplots/pgfplotscore.code.tex
-\t@pgfplots@toka=\toks39
-\t@pgfplots@tokb=\toks40
-\t@pgfplots@tokc=\toks41
+\t@pgfplots@toka=\toks41
+\t@pgfplots@tokb=\toks42
+\t@pgfplots@tokc=\toks43
 \pgfplots@tmpa=\dimen325
 \c@pgfplots@coordindex=\count348
 \c@pgfplots@scanlineindex=\count349
  (/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/tex/generic/pgfplots/sys/pgfplotssysgeneric.code.tex)) (/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/tex/generic/pgfplots/libs/pgfplotslibrary.code.tex) (/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_loader.code.tex (/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/tex/generic/pgf/libraries/pgflibraryfpu.code.tex)
 Package pgfplots: loading complementary utilities for your pgf version...
-\t@pgf@toka=\toks42
-\t@pgf@tokb=\toks43
-\t@pgf@tokc=\toks44
+\t@pgf@toka=\toks44
+\t@pgf@tokb=\toks45
+\t@pgf@tokc=\toks46
 (/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_pgfutil-common-lists.tex)) (/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/tex/generic/pgfplots/util/pgfplotsutil.code.tex (/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/tex/generic/pgfplots/liststructure/pgfplotsliststructure.code.tex) (/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/tex/generic/pgfplots/liststructure/pgfplotsliststructureext.code.tex) (/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/tex/generic/pgfplots/liststructure/pgfplotsarray.code.tex
 \c@pgfplotsarray@tmp=\count350
 ) (/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/tex/generic/pgfplots/liststructure/pgfplotsmatrix.code.tex) (/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/tex/generic/pgfplots/numtable/pgfplotstableshared.code.tex
 \c@pgfplotstable@counta=\count351
-\t@pgfplotstable@a=\toks45
+\t@pgfplotstable@a=\toks47
 ) (/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/tex/generic/pgfplots/liststructure/pgfplotsdeque.code.tex) (/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/tex/generic/pgfplots/util/pgfplotsbinary.code.tex (/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/tex/generic/pgfplots/util/pgfplotsbinary.data.code.tex)) (/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/tex/generic/pgfplots/util/pgfplotsutil.verb.code.tex) (/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/tex/generic/pgfplots/libs/pgflibrarypgfplots.surfshading.code.tex
 \c@pgfplotslibrarysurf@no=\count352
  (/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/tex/generic/pgfplots/sys/pgflibrarypgfplots.surfshading.pgfsys-pdftex.def))) (/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/tex/generic/pgfplots/util/pgfplotscolormap.code.tex (/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/tex/generic/pgfplots/util/pgfplotscolor.code.tex)) (/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/tex/generic/pgfplots/pgfplotsstackedplots.code.tex) (/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/tex/generic/pgfplots/pgfplotsplothandlers.code.tex (/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/tex/generic/pgfplots/pgfplotsmeshplothandler.code.tex (/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/tex/generic/pgfplots/pgfplotsmeshplotimage.code.tex))) (/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/tex/generic/pgfplots/pgfplots.scaling.code.tex) (/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/tex/generic/pgfplots/pgfplotscoordprocessing.code.tex) (/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/tex/generic/pgfplots/pgfplots.errorbars.code.tex) (/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/tex/generic/pgfplots/pgfplots.markers.code.tex) (/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/tex/generic/pgfplots/pgfplotsticks.code.tex) (/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/tex/generic/pgfplots/pgfplots.paths.code.tex) (/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/tex/generic/pgfplots/libs/tikzlibrarypgfplots.contourlua.code.tex)
@@ -589,16 +629,20 @@ File: tikzlibraryplotmarks.code.tex 2023-01-15 v3.1.10 (3.1.10)
 File: pgflibraryplotmarks.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ))) (/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/tex/latex/enumitem/enumitem.sty
 Package: enumitem 2025/02/06 v3.11 Customized lists
-\enitkv@toks@=\toks46
+\enitkv@toks@=\toks48
 \labelindent=\skip85
 \enit@outerparindent=\dimen332
-\enit@toks=\toks47
+\enit@toks=\toks49
 \enit@inbox=\box122
 \enit@count@id=\count354
 \enitdp@description=\count355
 ) (/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/tex/latex/url/url.sty
 \Urlmuskip=\muskip18
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 36.
+ (/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/tex/latex/lm/t1lmr.fd
+File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) (/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2025-06-09 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count356
@@ -610,20 +654,20 @@ LaTeX Warning: Unused global option(s):
 No file poster.aux.
 \openout1 = `poster.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
 (/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count357
@@ -631,12 +675,12 @@ LaTeX Font Info:    ... okay on input line 32.
 \scratchbox=\box123
 \nofMPsegments=\count358
 \nofMParguments=\count359
-\everyMPshowfont=\toks48
+\everyMPshowfont=\toks50
 \MPscratchCnt=\count360
 \MPscratchDim=\dimen334
 \MPnumerator=\count361
 \makeMPintoPDFobject=\count362
-\everyMPtoPDFconversion=\toks49
+\everyMPtoPDFconversion=\toks51
 ) (/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
@@ -681,31 +725,61 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 
 Package pgfplots Warning: running in backwards compatibility mode (unsuitable tick labels; missing features). Consider writing \pgfplotsset{compat=1.18} into your preamble.
- on input line 32.
+ on input line 36.
 
 <images/logos/UWr_Logo.jpg, id=29, 48.18pt x 18.0675pt>
 File: images/logos/UWr_Logo.jpg Graphic file (type jpg)
 <use images/logos/UWr_Logo.jpg>
-Package pdftex.def Info: images/logos/UWr_Logo.jpg  used on input line 97.
+Package pdftex.def Info: images/logos/UWr_Logo.jpg  used on input line 87.
 (pdftex.def)             Requested size: 116.31285pt x 43.61497pt.
 <images/logos/KSI_Logo.png, id=30, 48.18pt x 18.0675pt>
 File: images/logos/KSI_Logo.png Graphic file (type png)
 <use images/logos/KSI_Logo.png>
-Package pdftex.def Info: images/logos/KSI_Logo.png  used on input line 97.
+Package pdftex.def Info: images/logos/KSI_Logo.png  used on input line 87.
 (pdftex.def)             Requested size: 106.344pt x 39.87675pt.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 97.
-(/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/tex/latex/amsfonts/umsa.fd
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 87.
+(/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/tex/latex/lm/ot1lmr.fd
+File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 87.
+ (/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/tex/latex/lm/omllmm.fd
+File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 87.
+ (/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/tex/latex/lm/omslmsy.fd
+File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 87.
+ (/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/tex/latex/lm/omxlmex.fd
+File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 87.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 87.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 87.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 87.
+ (/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 97.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 87.
  (/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 <images/logos/qrcode.png, id=32, 1505.625pt x 1505.625pt>
 File: images/logos/qrcode.png Graphic file (type png)
 <use images/logos/qrcode.png>
-Package pdftex.def Info: images/logos/qrcode.png  used on input line 97.
+Package pdftex.def Info: images/logos/qrcode.png  used on input line 87.
 (pdftex.def)             Requested size: 87.20914pt x 87.22804pt.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <12> on input line 87.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <8> on input line 87.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <6> on input line 87.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <9> on input line 87.
 
 
 
@@ -716,7 +790,15 @@ Package pdftex.def Info: images/logos/qrcode.png  used on input line 97.
 
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
+LaTeX Font Info:    Trying to load font information for T1+lmss on input line 104.
+(/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/tex/latex/lm/t1lmss.fd
+File: t1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
 Missing character: There is no ; in font nullfont!
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 118.
+(/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/tex/latex/lm/ts1lmr.fd
+File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
@@ -738,18 +820,18 @@ Missing character: There is no ; in font nullfont!
 <images/adversarial_examples/cw_example_cifar10_1.png, id=33, 1284.8pt x 722.7pt>
 File: images/adversarial_examples/cw_example_cifar10_1.png Graphic file (type png)
 <use images/adversarial_examples/cw_example_cifar10_1.png>
-Package pdftex.def Info: images/adversarial_examples/cw_example_cifar10_1.png  used on input line 221.
-(pdftex.def)             Requested size: 257.69572pt x 144.94545pt.
+Package pdftex.def Info: images/adversarial_examples/cw_example_cifar10_1.png  used on input line 211.
+(pdftex.def)             Requested size: 257.6934pt x 144.94545pt.
 <images/adversarial_examples/fgsm_example_cifar10_2.png, id=34, 1284.8pt x 722.7pt>
 File: images/adversarial_examples/fgsm_example_cifar10_2.png Graphic file (type png)
 <use images/adversarial_examples/fgsm_example_cifar10_2.png>
-Package pdftex.def Info: images/adversarial_examples/fgsm_example_cifar10_2.png  used on input line 225.
-(pdftex.def)             Requested size: 257.69572pt x 144.94545pt.
+Package pdftex.def Info: images/adversarial_examples/fgsm_example_cifar10_2.png  used on input line 215.
+(pdftex.def)             Requested size: 257.6934pt x 144.94545pt.
 <images/adversarial_examples/pgd_example_cifar10_3.png, id=35, 1284.8pt x 722.7pt>
 File: images/adversarial_examples/pgd_example_cifar10_3.png Graphic file (type png)
 <use images/adversarial_examples/pgd_example_cifar10_3.png>
-Package pdftex.def Info: images/adversarial_examples/pgd_example_cifar10_3.png  used on input line 229.
-(pdftex.def)             Requested size: 257.69572pt x 144.94545pt.
+Package pdftex.def Info: images/adversarial_examples/pgd_example_cifar10_3.png  used on input line 219.
+(pdftex.def)             Requested size: 257.6934pt x 144.94545pt.
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
@@ -760,34 +842,38 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 
-LaTeX Warning: File `images/results/attack_comparison_original.png' not found on input line 270.
+LaTeX Warning: File `images/results/attack_comparison_original.png' not found on input line 260.
 
 
-/Users/igorjakus/Projects/dinomite/poster/poster.tex:270: Package pdftex.def Error: File `images/results/attack_comparison_original.png' not found: using draft setting.
+/Users/igorjakus/Projects/dinomite/poster/poster.tex:260: Package pdftex.def Error: File `images/results/attack_comparison_original.png' not found: using draft setting.
 
 See the pdftex.def package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.270 ...s/results/attack_comparison_original.png}
+l.260 ...s/results/attack_comparison_original.png}
                                                   
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 260.
+(/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/tex/latex/lm/t1lmtt.fd
+File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 
-LaTeX Warning: File `images/results/robustness_comparison_pgd.png' not found on input line 276.
+LaTeX Warning: File `images/results/robustness_comparison_pgd.png' not found on input line 266.
 
 
-/Users/igorjakus/Projects/dinomite/poster/poster.tex:276: Package pdftex.def Error: File `images/results/robustness_comparison_pgd.png' not found: using draft setting.
+/Users/igorjakus/Projects/dinomite/poster/poster.tex:266: Package pdftex.def Error: File `images/results/robustness_comparison_pgd.png' not found: using draft setting.
 
 See the pdftex.def package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.276 ...es/results/robustness_comparison_pgd.png}
+l.266 ...es/results/robustness_comparison_pgd.png}
                                                   
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -799,7 +885,7 @@ Missing character: There is no ; in font nullfont!
 
 [2
 
-{/nix/store/rga3dnbvmcl02blnk6xdrfiqpjifa074-texlive-combined-2025/share/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/fonts/enc/dvips/cm-super/cm-super-ts1.enc} <./images/logos/UWr_Logo.jpg> <./images/logos/KSI_Logo.png> <./images/logos/qrcode.png> <./images/adversarial_examples/cw_example_cifar10_1.png (PNG copy)> <./images/adversarial_examples/fgsm_example_cifar10_2.png (PNG copy)> <./images/adversarial_examples/pgd_example_cifar10_3.png (PNG copy)>] (./poster.aux)
+{/nix/store/rga3dnbvmcl02blnk6xdrfiqpjifa074-texlive-combined-2025/share/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/fonts/enc/dvips/lm/lm-ec.enc}{/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/fonts/enc/dvips/lm/lm-mathsy.enc}{/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/fonts/enc/dvips/lm/lm-ts1.enc}{/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/fonts/enc/dvips/lm/lm-rm.enc}{/nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/fonts/enc/dvips/lm/lm-mathit.enc} <./images/logos/UWr_Logo.jpg> <./images/logos/KSI_Logo.png> <./images/logos/qrcode.png> <./images/adversarial_examples/cw_example_cifar10_1.png (PNG copy)> <./images/adversarial_examples/fgsm_example_cifar10_2.png (PNG copy)> <./images/adversarial_examples/pgd_example_cifar10_3.png (PNG copy)>] (./poster.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-06-09>
@@ -810,18 +896,18 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 28841 strings out of 467888
- 738317 string characters out of 5412697
- 1263890 words of memory out of 5000000
- 56944 multiletter control sequences out of 15000+600000
- 646063 words of font info for 88 fonts, out of 8000000 for 9000
+ 29122 strings out of 467888
+ 745713 string characters out of 5412697
+ 1263591 words of memory out of 5000000
+ 57184 multiletter control sequences out of 15000+600000
+ 699566 words of font info for 93 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 117i,12n,121p,765b,1047s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/fonts/type1/public/amsfonts/cm/cmr10.pfb></nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/fonts/type1/public/amsfonts/cm/cmr7.pfb></nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/fonts/type1/public/cm-super/sfbx0900.pfb></nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/fonts/type1/public/cm-super/sfbx1000.pfb></nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/fonts/type1/public/cm-super/sfbx1200.pfb></nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/fonts/type1/public/cm-super/sfbx2488.pfb></nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/fonts/type1/public/cm-super/sfrm0900.pfb></nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/fonts/type1/public/cm-super/sfrm1000.pfb></nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/fonts/type1/public/cm-super/sfrm1200.pfb></nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/fonts/type1/public/cm-super/sfsx1440.pfb></nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/fonts/type1/public/cm-super/sfti1000.pfb></nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on poster.pdf (1 page, 1899328 bytes).
+ 117i,11n,121p,765b,1072s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/fonts/type1/public/lm/lmbx10.pfb></nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/fonts/type1/public/lm/lmbx12.pfb></nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/fonts/type1/public/lm/lmbx9.pfb></nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/fonts/type1/public/lm/lmmi10.pfb></nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/fonts/type1/public/lm/lmmi7.pfb></nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/fonts/type1/public/lm/lmmi9.pfb></nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/fonts/type1/public/lm/lmr10.pfb></nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/fonts/type1/public/lm/lmr12.pfb></nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/fonts/type1/public/lm/lmr7.pfb></nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/fonts/type1/public/lm/lmr9.pfb></nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/fonts/type1/public/lm/lmri10.pfb></nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/fonts/type1/public/lm/lmssbx10.pfb></nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/fonts/type1/public/lm/lmsy10.pfb></nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/fonts/type1/public/lm/lmsy6.pfb></nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/fonts/type1/public/lm/lmsy7.pfb></nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/fonts/type1/public/lm/lmsy8.pfb></nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/fonts/type1/public/lm/lmtt10.pfb></nix/store/phgzpfd1ghxamcz18bi1rivm0xqz7n73-texlive-combined-2025-texmfdist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on poster.pdf (1 page, 1903479 bytes).
 PDF statistics:
- 149 PDF objects out of 1000 (max. 8388607)
- 80 compressed objects within 1 object stream
+ 145 PDF objects out of 1000 (max. 8388607)
+ 79 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  139 words of extra memory for PDF output out of 10000 (max. 10000000)
 

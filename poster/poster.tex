@@ -2,6 +2,10 @@
 % Plik: poster.tex
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \documentclass[a1paper,portrait,fontscale=0.54]{baposter}
+% Encoding and fonts for proper Polish diacritics
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
 \usepackage{tikz}
 \usepackage{graphicx}
 \usepackage{amssymb, mathtools, amsmath}
@@ -68,26 +72,12 @@
 {\color{nustblue}\bf
 \Huge DINOmite: Adversarial Robustness \\of DINOv3 Vision Transformers
 }
-% --- Autorzy ---
+% --- Subtitle: Authors (alphabetical by surname) ---
 {\color{black}\large
-  \vspace{1em}
-  \begin{minipage}[t]{0.18\textwidth}
-    \centering Jan Burdzicki$^*$ \\ {\small janburdzicki@gmail.com}
-  \end{minipage}
-  \hspace{0.2cm}
-  \begin{minipage}[t]{0.18\textwidth}
-    \centering Igor Jakus$^*$ \\ {\small igorjakus@protonmail.com}
-  \end{minipage}
-  \hspace{0.2cm}
-  \begin{minipage}[t]{0.18\textwidth}
-    \centering Hubert Berlicki$^*$ \\ {\small berlickihubert@gmail.com}
-  \end{minipage}
-  \hspace{0.2cm}
-  \begin{minipage}[t]{0.25\textwidth}
-    \centering Wojciech Aszkiełowicz$^*$ \\ {\small w.aszkielowicz@proton.me}
-  \end{minipage}
-  \\[0.5em]
-  Institute of Computer Science, University of Wrocław \\[0.3em]
+  \vspace{0.8em}
+    \centering Wojciech Aszkie\l{}owicz$^*$ \;\; Hubert Berlicki$^*$ \;\; Jan Burdzicki$^*$ \;\; Igor Jakus$^*$ \\[0.4em]
+  {\small w.aszkielowicz@proton.me \;\; berlickihubert@gmail.com \;\; janburdzicki@gmail.com \;\; igorjakus@protonmail.com} \\[0.5em]
+    Institute of Computer Science, University of Wroc\l{}aw \\[0.3em]
   {\small $^*$Equal contribution}
 }
 % --- Logo Prawe ---
