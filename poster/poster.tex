@@ -152,7 +152,7 @@ $$ \max_{\delta} L(f(x + \delta), y) \quad \text{s.t.} \quad \|\delta\|_\infty \
 \begin{posterbox}[name=experiments, column=0, below=problem]{Experimental Setup}
 \subsection*{Model Architecture}
 \begin{itemize}
-    \item \textbf{Backbone:} DINOv3 ViT-S/16 (Frozen).
+    \item \textbf{Backbone:} DINOv3 ViT-S/16 (Frozen for Classification).
     \item \textbf{Head:} Linear Classification Head (Trainable).
 \end{itemize}
 
@@ -163,7 +163,7 @@ $$ \max_{\delta} L(f(x + \delta), y) \quad \text{s.t.} \quad \|\delta\|_\infty \
 
 \subsection*{Evaluation}
 \begin{itemize}
-    \item \textbf{Metric:} Clean vs. Robust Accuracy (PGD-10).
+    \item \textbf{Metric:} Clean vs. Robust Accuracy (PGD-40).
     \item \textbf{Epsilon:} $\epsilon \in \{0, \dots, 8/255\}$.
     \item \textbf{Attacks:} FGSM, PGD, C\&W.
     \item \textbf{Defenses:} PGD-AT, TRADES.
@@ -203,7 +203,7 @@ $$ x_{adv} = x + \epsilon \cdot \text{sign}(\nabla_x L(\theta, x, y)) $$
 \subsection*{PGD (Projected Gradient Descent)}
 The "Universal First-Order Adversary". Iterative FGSM with projection.
 $$ x^{t+1} = \Pi_{x+\mathcal{S}} (x^t + \alpha \cdot \text{sign}(\nabla_x L(\theta, x^t, y))) $$
-\textit{Note: The strongest defense benchmark. We use 10 steps.}
+\textit{Note: The strongest defense benchmark. We use 40 steps.}
 
 \subsection*{C\&W (Carlini \& Wagner)}
 Optimization-based attack minimizing distance and loss term.
