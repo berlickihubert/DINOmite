@@ -72,7 +72,7 @@ def evaluate_attack_robustness(
             else:
                 if attack_name == "FGSM":
                     target_labels = labels  # Untargeted
-                    adv_images = attack_fn(model, images, labels, target_labels, epsilon=eps)
+                    adv_images = attack_fn(model, images, labels, target_labels, eps)
                 elif attack_name == "PGD":
                     adv_images = attack_fn(model, images, labels, eps=eps, alpha=eps / 10, steps=40)
                 elif attack_name == "BIM":
@@ -128,7 +128,7 @@ def generate_robustness_table(
         Dictionary with results for each attack method
     """
     attacks = {
-        "FGSM": lambda m, img, lbl: fgsm_attack(m, img, lbl, lbl, epsilon=8 / 255),
+        "FGSM": lambda m, img, lbl: fgsm_attack(m, img, lbl, lbl, 8 / 255),
         "PGD": lambda m, img, lbl: pgd_attack(m, img, lbl, eps=8 / 255, alpha=2 / 255, steps=40),
         "BIM": lambda m, img, lbl: bim_attack(m, img, lbl, eps=8 / 255, alpha=2 / 255, steps=10),
     }

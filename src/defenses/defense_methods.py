@@ -223,9 +223,8 @@ def mart_training_step(
 
     # BCE loss for misclassified examples
     p_adv = F.softmax(outputs_adv, dim=1)
-    loss_bce = F.binary_cross_entropy(p_adv, F.one_hot(labels, num_classes=num_classes).float(), reduction="none").sum(
-        dim=1
-    )
+    labels_one_hot = F.one_hot(labels, num_classes=num_classes).float()
+    loss_bce = F.binary_cross_entropy(p_adv, labels_one_hot, reduction="none").sum(dim=1)
 
     # KL divergence
     p_natural = F.softmax(outputs_natural, dim=1)
