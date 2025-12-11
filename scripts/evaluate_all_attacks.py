@@ -109,7 +109,7 @@ def evaluate_single_attack(model, test_loader, device, attack_name, epsilons):
     elif attack_name == "autoattack":
         # AutoAttack evaluation (returns single accuracy value)
         max_eps = max(epsilons) if epsilons else 8 / 255
-        acc = autoattack_evaluate(model, test_loader, device, eps=max_eps, num_samples=args.num_samples)
+        acc = autoattack_evaluate(model, test_loader, device, eps=max_eps)
         results[max_eps] = {"accuracy": acc}
 
     return results
