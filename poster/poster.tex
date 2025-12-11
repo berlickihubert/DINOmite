@@ -233,16 +233,17 @@ $$ \min_{\delta} \|\delta\|_2 + c \cdot f(x+\delta) $$
 
 % PRZENIESIONE: Defense Strategies
 \begin{posterbox}[name=defenses, column=2, row=0]{Defense Strategies}
-Standard training yields 0\% robustness. We evaluate three state-of-the-art defenses:
+Standard training yields 0\% robustness. We evaluate two state-of-the-art defenses:
 
 \subsection*{PGD-AT (Adversarial Training)}
-Min-Max game training on PGD examples.
-$$ \min_\theta \mathbb{E} [\max_{\delta \in S} L(f(x+\delta), y)] $$
+A min-max game formulation (Madry et al.). The inner loop generates strong adversarial examples, while the outer loop updates the model to resist them.
+$$ \min_\theta \mathbb{E}_{(x,y)\sim D} [\max_{\|\delta\|_\infty \le \epsilon} L(f_\theta(x+\delta), y)] $$
+\textit{Key Idea: Train directly on the worst-case examples.}
 
 \subsection*{TRADES}
-Separates clean accuracy and stability (KL-divergence).
-$$ \min_\theta \mathbb{E} [L(f(x),y) + \beta \cdot \text{KL}(f(x) \| f(x+\delta_{adv}))] $$
-\textit{Result: Smoother decision boundaries.}
+Separates loss into natural accuracy and robustness regularization (Zhang et al.). It minimizes KL-divergence between predictions on clean and adversarial inputs.
+$$ \min_\theta \mathbb{E} [\underbrace{L(f(x),y)}_{\text{Natural}} + \beta \cdot \underbrace{\text{KL}(f(x) \| f(x+\delta))}_{\text{Robustness}}] $$
+\textit{Key Idea: Enforce smoothness of the decision boundary.}
 \end{posterbox}
 
 \begin{posterbox}[name=comparison, column=2, below=defenses]{Defense Results}
