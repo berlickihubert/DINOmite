@@ -1,14 +1,15 @@
 """
 Model definitions and utilities for DINOmite.
 """
+
 import torch
 import torch.nn as nn
 from transformers import AutoModel, AutoImageProcessor
-from typing import Optional, Union
+from typing import Optional
 import os
 import logging
 
-from src.config import DINO_MODEL_NAME, DINO_EMBEDDING_DIM, PROJECT_ROOT, MODELS_DIR
+from src.config import DINO_MODEL_NAME, DINO_EMBEDDING_DIM, MODELS_DIR
 
 logger = logging.getLogger(__name__)
 
@@ -127,10 +128,12 @@ class DinoWithLinearHead(nn.Module):
             save_path: Path to save model weights
         """
         os.makedirs(os.path.dirname(save_path), exist_ok=True)
-        torch.save({
-            "model": self.state_dict(),
-            "num_classes": self.num_classes,
-            "dino_model_name": self.dino_model_name,
-        }, save_path)
+        torch.save(
+            {
+                "model": self.state_dict(),
+                "num_classes": self.num_classes,
+                "dino_model_name": self.dino_model_name,
+            },
+            save_path,
+        )
         logger.info(f"Model saved to {save_path}")
-

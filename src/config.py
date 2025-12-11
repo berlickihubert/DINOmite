@@ -1,6 +1,7 @@
 """
 Configuration and constants for DINOmite project.
 """
+
 from dataclasses import dataclass
 from typing import Dict, List, Tuple, Optional
 from enum import Enum
@@ -9,6 +10,7 @@ import os
 
 class DatasetType(Enum):
     """Supported dataset types."""
+
     CIFAR10 = "cifar10"
     GTSRB = "gtsrb"
     TINY_IMAGENET = "tiny_imagenet"
@@ -17,6 +19,7 @@ class DatasetType(Enum):
 @dataclass
 class DatasetConfig:
     """Configuration for a dataset."""
+
     name: str
     num_classes: int
     image_size: Tuple[int, int]  # (height, width)
@@ -58,10 +61,10 @@ DATASET_CONFIGS: Dict[DatasetType, DatasetConfig] = {
 }
 
 # Attack configurations
-ATTACK_EPSILONS: List[float] = [0, 1/255, 2/255, 4/255, 8/255, 16/255]
-DEFAULT_EPSILON: float = 8/255
+ATTACK_EPSILONS: List[float] = [0, 1 / 255, 2 / 255, 4 / 255, 8 / 255, 16 / 255]
+DEFAULT_EPSILON: float = 8 / 255
 DEFAULT_PGD_STEPS: int = 40
-DEFAULT_PGD_ALPHA: float = 2/255
+DEFAULT_PGD_ALPHA: float = 2 / 255
 
 # Model configurations
 DINO_MODEL_NAME: str = "facebook/dinov3-vits16-pretrain-lvd1689m"
@@ -142,4 +145,3 @@ PAPER_REFERENCES = {
         "url": "https://arxiv.org/abs/2003.01690",
     },
 }
-

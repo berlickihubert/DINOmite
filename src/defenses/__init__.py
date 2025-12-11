@@ -1,6 +1,7 @@
 """
 Defense methods against adversarial attacks.
 """
+
 from src.defenses.defense_methods import (
     InputTransformationDefense,
     FeatureDenoising,
@@ -20,4 +21,3 @@ __all__ = [
     "pgd_adversarial_training",
     "trades_training",
 ]
-

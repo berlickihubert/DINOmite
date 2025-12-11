@@ -4,19 +4,20 @@ Experiment configuration and management system.
 This module provides utilities for managing experiments, configurations,
 and result collection for adversarial robustness evaluation.
 """
+
 import json
 import os
 from dataclasses import dataclass, asdict
 from typing import Dict, List, Optional, Any
 from datetime import datetime
-from pathlib import Path
 
-from src.config import PROJECT_ROOT, RESULTS_DIR
+from src.config import PROJECT_ROOT
 
 
 @dataclass
 class ExperimentConfig:
     """Configuration for a single experiment."""
+
     # Experiment metadata
     name: str
     description: str
@@ -71,13 +72,13 @@ class ExperimentConfig:
     def save(self, path: str) -> None:
         """Save config to JSON file."""
         os.makedirs(os.path.dirname(path), exist_ok=True)
-        with open(path, 'w') as f:
+        with open(path, "w") as f:
             json.dump(self.to_dict(), f, indent=2)
 
     @classmethod
     def load(cls, path: str) -> "ExperimentConfig":
         """Load config from JSON file."""
-        with open(path, 'r') as f:
+        with open(path, "r") as f:
             data = json.load(f)
         return cls.from_dict(data)
 
@@ -108,7 +109,7 @@ class ExperimentManager:
         self,
         name: str,
         description: str = "",
-        **kwargs
+        **kwargs,
     ) -> ExperimentConfig:
         """
         Create a new experiment configuration.
@@ -129,7 +130,7 @@ class ExperimentManager:
             description=description,
             timestamp=timestamp,
             output_dir=os.path.join(self.results_dir, exp_name),
-            **kwargs
+            **kwargs,
         )
 
         # Save config
@@ -173,7 +174,7 @@ class ExperimentManager:
         self,
         config: ExperimentConfig,
         results: Dict[str, Any],
-        filename: str = "results.json"
+        filename: str = "results.json",
     ) -> str:
         """
         Save experiment results.
@@ -187,7 +188,6 @@ class ExperimentManager:
             Path to saved results file
         """
         output_path = os.path.join(config.output_dir, filename)
-        with open(output_path, 'w') as f:
+        with open(output_path, "w") as f:
             json.dump(results, f, indent=2)
         return output_path
-

@@ -4,7 +4,7 @@ Download missing paper PDFs from arXiv.
 
 This script downloads all paper PDFs referenced in config.py that are missing.
 """
-import os
+
 import sys
 import requests
 from pathlib import Path
@@ -30,7 +30,7 @@ def download_arxiv_pdf(arxiv_id: str, output_path: Path) -> bool:
         True if successful, False otherwise
     """
     # Remove version suffix if present
-    arxiv_id = arxiv_id.split('v')[0]
+    arxiv_id = arxiv_id.split("v")[0]
 
     url = f"https://arxiv.org/pdf/{arxiv_id}.pdf"
 
@@ -39,7 +39,7 @@ def download_arxiv_pdf(arxiv_id: str, output_path: Path) -> bool:
         response = requests.get(url, stream=True, timeout=30)
         response.raise_for_status()
 
-        with open(output_path, 'wb') as f:
+        with open(output_path, "wb") as f:
             for chunk in response.iter_content(chunk_size=8192):
                 f.write(chunk)
 
@@ -64,7 +64,7 @@ def main():
             continue
 
         # Remove version suffix
-        arxiv_id_clean = arxiv_id.split('v')[0]
+        arxiv_id_clean = arxiv_id.split("v")[0]
         pdf_path = REFERENCES_DIR / f"{arxiv_id_clean}.pdf"
 
         if pdf_path.exists():
@@ -101,4 +101,3 @@ if __name__ == "__main__":
         sys.exit(1)
 
     main()
-

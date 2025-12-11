@@ -7,9 +7,9 @@ Paper: https://arxiv.org/abs/1607.02533
 BIM is an iterative version of FGSM that applies FGSM multiple times
 with a smaller step size.
 """
+
 import torch
 import torch.nn.functional as F
-from typing import Union
 import logging
 
 logger = logging.getLogger(__name__)

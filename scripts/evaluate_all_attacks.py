@@ -5,6 +5,7 @@ Evaluate model robustness against all attacks.
 This script runs comprehensive evaluation against all implemented attacks
 and generates comparison plots and tables.
 """
+
 import argparse
 import torch
 from torch.utils.data import DataLoader
@@ -13,7 +14,6 @@ import os
 import sys
 from pathlib import Path
 import logging
-from collections import defaultdict
 
 # Add project root to path
 sys.path.insert(0, str(Path(__file__).parent.parent))
@@ -29,11 +29,11 @@ from src.attacks import (
     autoattack_evaluate,
 )
 from src.evaluation import evaluate_model, plot_robustness_curves, generate_results_table
-from src.config import RESULTS_DIR, MODELS_DIR
+from src.config import RESULTS_DIR
 
 logging.basicConfig(
     level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
 )
 logger = logging.getLogger(__name__)
 
@@ -57,8 +57,10 @@ def evaluate_single_attack(model, test_loader, device, attack_name, epsilons):
         for eps in epsilons:
             if eps == 0:
                 continue
+
             def attack_fn(m, img, lbl):
                 return fgsm_attack(m, img, lbl, epsilon=eps)
+
             acc = evaluate_model(model, test_loader, device, attack_fn=attack_fn, desc=f"FGSM (ε={eps:.4f})")
             results[eps] = {"accuracy": acc}
 
@@ -66,8 +68,10 @@ def evaluate_single_attack(model, test_loader, device, attack_name, epsilons):
         for eps in epsilons:
             if eps == 0:
                 continue
+
             def attack_fn(m, img, lbl):
-                return pgd_attack(m, img, lbl, eps=eps, alpha=eps/10, steps=40)
+                return pgd_attack(m, img, lbl, eps=eps, alpha=eps / 10, steps=40)
+
             acc = evaluate_model(model, test_loader, device, attack_fn=attack_fn, desc=f"PGD (ε={eps:.4f})")
             results[eps] = {"accuracy": acc}
 
@@ -75,8 +79,10 @@ def evaluate_single_attack(model, test_loader, device, attack_name, epsilons):
         for eps in epsilons:
             if eps == 0:
                 continue
+
             def attack_fn(m, img, lbl):
-                return bim_attack(m, img, lbl, eps=eps, alpha=eps/10, steps=10)
+                return bim_attack(m, img, lbl, eps=eps, alpha=eps / 10, steps=10)
+
             acc = evaluate_model(model, test_loader, device, attack_fn=attack_fn, desc=f"BIM (ε={eps:.4f})")
             results[eps] = {"accuracy": acc}
 
@@ -84,22 +90,25 @@ def evaluate_single_attack(model, test_loader, device, attack_name, epsilons):
         # DeepFool doesn't use epsilon in the same way
         def attack_fn(m, img, lbl):
             return deepfool_attack(m, img, lbl)
+
         acc = evaluate_model(model, test_loader, device, attack_fn=attack_fn, desc="DeepFool")
-        results[8/255] = {"accuracy": acc}  # Use default epsilon for plotting
+        results[8 / 255] = {"accuracy": acc}  # Use default epsilon for plotting
 
     elif attack_name == "cw":
         # C&W doesn't use epsilon in the same way
         num_classes = 10
+
         def attack_fn(m, img, lbl):
             target_labels = torch.randint(0, num_classes, lbl.shape).to(device)
             target_labels = torch.where(target_labels == lbl, (lbl + 1) % num_classes, target_labels)
             return carlini_wagner_attack(m, img, lbl, target_labels, c=1.0, max_iter=100)
+
         acc = evaluate_model(model, test_loader, device, attack_fn=attack_fn, desc="C&W")
-        results[8/255] = {"accuracy": acc}  # Use default epsilon for plotting
+        results[8 / 255] = {"accuracy": acc}  # Use default epsilon for plotting
 
     elif attack_name == "autoattack":
         # AutoAttack evaluation (returns single accuracy value)
-        max_eps = max(epsilons) if epsilons else 8/255
+        max_eps = max(epsilons) if epsilons else 8 / 255
         acc = autoattack_evaluate(model, test_loader, device, eps=max_eps, num_samples=args.num_samples)
         results[max_eps] = {"accuracy": acc}
 
@@ -112,45 +121,41 @@ def main():
         "--model-path",
         type=str,
         required=True,
-        help="Path to model checkpoint"
+        help="Path to model checkpoint",
     )
     parser.add_argument(
-        "--dataset",
-        type=str,
-        default="cifar10",
-        choices=["cifar10", "gtsrb", "tiny_imagenet"],
-        help="Dataset to use"
+        "--dataset", type=str, default="cifar10", choices=["cifar10", "gtsrb", "tiny_imagenet"], help="Dataset to use"
     )
     parser.add_argument(
         "--epsilons",
         type=float,
         nargs="+",
-        default=[0, 1/255, 2/255, 4/255, 8/255, 16/255],
-        help="Epsilon values to test"
+        default=[0, 1 / 255, 2 / 255, 4 / 255, 8 / 255, 16 / 255],
+        help="Epsilon values to test",
     )
     parser.add_argument(
         "--batch-size",
         type=int,
         default=32,
-        help="Batch size for evaluation"
+        help="Batch size for evaluation",
     )
     parser.add_argument(
         "--num-samples",
         type=int,
         default=None,
-        help="Number of samples to evaluate (None = all)"
+        help="Number of samples to evaluate (None = all)",
     )
     parser.add_argument(
         "--output-dir",
         type=str,
         default=RESULTS_DIR,
-        help="Directory to save results"
+        help="Directory to save results",
     )
     parser.add_argument(
         "--device",
         type=str,
         default="cuda" if torch.cuda.is_available() else "cpu",
-        help="Device to use"
+        help="Device to use",
     )
     parser.add_argument(
         "--attacks",
@@ -158,7 +163,7 @@ def main():
         nargs="+",
         default=ATTACKS,
         choices=ATTACKS,
-        help="Attacks to evaluate"
+        help="Attacks to evaluate",
     )
 
     args = parser.parse_args()
@@ -176,6 +181,7 @@ def main():
 
     # Get number of classes from config
     from src.config import DATASET_CONFIGS
+
     num_classes = DATASET_CONFIGS[dataset_type].num_classes
 
     # Load dataset
@@ -186,7 +192,7 @@ def main():
         batch_size=args.batch_size,
         shuffle=False,
         num_workers=4,
-        pin_memory=True
+        pin_memory=True,
     )
 
     # Load model
@@ -199,9 +205,9 @@ def main():
     all_results = {}
 
     for attack_name in args.attacks:
-        logger.info(f"\n{'='*60}")
+        logger.info(f"\n{'=' * 60}")
         logger.info(f"Evaluating {attack_name.upper()}")
-        logger.info(f"{'='*60}")
+        logger.info(f"{'=' * 60}")
 
         results = evaluate_single_attack(model, test_loader, device, attack_name, args.epsilons)
         all_results[attack_name] = results
@@ -216,7 +222,7 @@ def main():
         "results": all_results,
     }
 
-    with open(output_file, 'w') as f:
+    with open(output_file, "w") as f:
         json.dump(output_data, f, indent=2)
 
     logger.info(f"\nResults saved to {output_file}")
@@ -238,9 +244,9 @@ def main():
     logger.info(f"Table saved to {table_path}")
 
     # Print summary
-    print("\n" + "="*60)
+    print("\n" + "=" * 60)
     print("EVALUATION SUMMARY")
-    print("="*60)
+    print("=" * 60)
     print(f"Model: {args.model_path}")
     print(f"Dataset: {args.dataset}")
     print("\nResults:")
@@ -248,9 +254,8 @@ def main():
         print(f"\n{attack_name.upper()}:")
         for eps, res in sorted(results.items()):
             print(f"  ε={eps:.6f}: {res['accuracy']:.2f}%")
-    print("="*60)
+    print("=" * 60)
 
 
 if __name__ == "__main__":
     main()
-

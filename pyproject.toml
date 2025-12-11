@@ -14,9 +14,8 @@ dependencies = [
     "torch>=2.8.0",
     "torchvision>=0.23.0",
     "transformers",
+    "autoattack @ git+https://github.com/fra31/auto-attack",
 ]
-
-# uv add git+https://github.com/fra31/auto-attack
 
 [dependency-groups]
 dev = ["pre-commit>=4.3.0", "ruff>=0.12.8"]
@@ -43,7 +42,7 @@ url = "https://download.pytorch.org/whl/cu129"
 explicit = true
 
 [tool.ruff]
-line-length = 100
+line-length = 120
 
 [tool.ruff.format]
 quote-style = "double"

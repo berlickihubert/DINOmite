@@ -2,17 +2,17 @@
 Dataset loading and preprocessing utilities for DINOmite.
 Supports multiple datasets with unified interface.
 """
+
 import torch
 import torchvision
 import torchvision.transforms as transforms
-from typing import Tuple, Optional
+from typing import Optional
 import logging
-import os
 from pathlib import Path
 import pandas as pd
 from PIL import Image
 
-from src.config import DatasetType, DATASET_CONFIGS, PROJECT_ROOT, DATA_DIR
+from src.config import DatasetType, DATASET_CONFIGS, DATA_DIR
 
 logger = logging.getLogger(__name__)
 
@@ -41,9 +41,7 @@ def get_cifar10_transforms(
 
     if normalize:
         config = DATASET_CONFIGS[DatasetType.CIFAR10]
-        transform_list.append(
-            transforms.Normalize(mean=config.mean, std=config.std)
-        )
+        transform_list.append(transforms.Normalize(mean=config.mean, std=config.std))
 
     return transforms.Compose(transform_list)
 
@@ -72,9 +70,7 @@ def get_gtsrb_transforms(
 
     if normalize:
         config = DATASET_CONFIGS[DatasetType.GTSRB]
-        transform_list.append(
-            transforms.Normalize(mean=config.mean, std=config.std)
-        )
+        transform_list.append(transforms.Normalize(mean=config.mean, std=config.std))
 
     return transforms.Compose(transform_list)
 
@@ -103,9 +99,7 @@ def get_tiny_imagenet_transforms(
 
     if normalize:
         config = DATASET_CONFIGS[DatasetType.TINY_IMAGENET]
-        transform_list.append(
-            transforms.Normalize(mean=config.mean, std=config.std)
-        )
+        transform_list.append(transforms.Normalize(mean=config.mean, std=config.std))
 
     return transforms.Compose(transform_list)
 
@@ -140,12 +134,12 @@ class GTSRBDataset(torch.utils.data.Dataset):
 
         for _, row in df.iterrows():
             if train:
-                img_path = self.data_dir / row['Path']
+                img_path = self.data_dir / row["Path"]
             else:
-                img_path = self.data_dir / row['Path']
+                img_path = self.data_dir / row["Path"]
 
             if img_path.exists():
-                self.samples.append((str(img_path), int(row['ClassId'])))
+                self.samples.append((str(img_path), int(row["ClassId"])))
 
         logger.info(f"Loaded {len(self.samples)} GTSRB samples ({'train' if train else 'test'})")
 
@@ -163,7 +157,7 @@ class GTSRBDataset(torch.utils.data.Dataset):
 
     def __getitem__(self, idx):
         img_path, label = self.samples[idx]
-        image = Image.open(img_path).convert('RGB')
+        image = Image.open(img_path).convert("RGB")
 
         if self.transform:
             image = self.transform(image)
@@ -200,7 +194,7 @@ class TinyImageNetDataset(torch.utils.data.Dataset):
             # Training: images are in class folders
             for class_dir in sorted(data_dir.iterdir()):
                 if class_dir.is_dir():
-                    class_id = int(class_dir.name.split('_')[0]) if '_' in class_dir.name else class_dir.name
+                    class_id = int(class_dir.name.split("_")[0]) if "_" in class_dir.name else class_dir.name
                     images_dir = class_dir / "images"
                     for img_file in sorted(images_dir.glob("*.JPEG")):
                         self.samples.append((str(img_file), class_id))
@@ -208,9 +202,9 @@ class TinyImageNetDataset(torch.utils.data.Dataset):
             # Validation: load from val_annotations.txt
             annotations_file = data_dir / "val_annotations.txt"
             if annotations_file.exists():
-                with open(annotations_file, 'r') as f:
+                with open(annotations_file, "r") as f:
                     for line in f:
-                        parts = line.strip().split('\t')
+                        parts = line.strip().split("\t")
                         img_file = data_dir / "images" / parts[0]
                         class_name = parts[1]
                         # Get class ID from class name
@@ -231,8 +225,8 @@ class TinyImageNetDataset(torch.utils.data.Dataset):
         # Get all class names
         classes_file = self.root / "words.txt"
         if classes_file.exists():
-            with open(classes_file, 'r') as f:
-                class_names = [line.strip().split('\t')[0] for line in f]
+            with open(classes_file, "r") as f:
+                class_names = [line.strip().split("\t")[0] for line in f]
                 if class_name in class_names:
                     return class_names.index(class_name)
         return 0
@@ -251,7 +245,7 @@ class TinyImageNetDataset(torch.utils.data.Dataset):
 
     def __getitem__(self, idx):
         img_path, label = self.samples[idx]
-        image = Image.open(img_path).convert('RGB')
+        image = Image.open(img_path).convert("RGB")
 
         if self.transform:
             image = self.transform(image)
@@ -330,10 +324,7 @@ def get_dataset_classes(dataset_type: DatasetType) -> list:
         List of class names
     """
     if dataset_type == DatasetType.CIFAR10:
-        return [
-            "airplane", "automobile", "bird", "cat", "deer",
-            "dog", "frog", "horse", "ship", "truck"
-        ]
+        return ["airplane", "automobile", "bird", "cat", "deer", "dog", "frog", "horse", "ship", "truck"]
     elif dataset_type == DatasetType.GTSRB:
         # GTSRB has 43 classes - German traffic signs
         return [f"sign_{i}" for i in range(43)]
@@ -341,11 +332,12 @@ def get_dataset_classes(dataset_type: DatasetType) -> list:
         # Tiny ImageNet has 200 classes
         # Try to load actual class names if available
         try:
-            from src.config import PROJECT_ROOT, DATA_DIR
+            from src.config import DATA_DIR
+
             words_file = Path(DATA_DIR) / "tiny-imagenet-200" / "words.txt"
             if words_file.exists():
-                with open(words_file, 'r') as f:
-                    class_names = [line.strip().split('\t')[1] for line in f if '\t' in line]
+                with open(words_file, "r") as f:
+                    class_names = [line.strip().split("\t")[1] for line in f if "\t" in line]
                     if len(class_names) == 200:
                         return class_names
         except:
@@ -353,4 +345,3 @@ def get_dataset_classes(dataset_type: DatasetType) -> list:
         return [f"class_{i}" for i in range(200)]
     else:
         raise ValueError(f"Unsupported dataset type: {dataset_type}")
-

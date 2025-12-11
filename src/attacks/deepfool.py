@@ -7,8 +7,8 @@ Paper: https://arxiv.org/abs/1511.04599
 DeepFool finds the minimal perturbation needed to cross the decision boundary.
 It's more efficient than C&W but typically produces larger perturbations.
 """
+
 import torch
-from typing import Union
 import logging
 
 logger = logging.getLogger(__name__)
@@ -59,7 +59,7 @@ def deepfool_attack_simple(
     model.eval()
 
     for i in range(len(images)):
-        image = images[i:i+1].clone().detach()
+        image = images[i : i + 1].clone().detach()
         image.requires_grad = True
 
         # Get original prediction
@@ -101,7 +101,7 @@ def deepfool_attack_simple(
                 break
 
             # Compute perturbation (distance to decision boundary)
-            r_i = (torch.abs(loss.item()) / (grad_norm ** 2)) * grad
+            r_i = (torch.abs(loss.item()) / (grad_norm**2)) * grad
             image = image + (1 + overshoot) * r_i
             image = image.detach()
 
@@ -111,6 +111,3 @@ def deepfool_attack_simple(
     if was_single:
         return adv_images.squeeze(0).detach()
     return adv_images.detach()
-
-
-

@@ -1,6 +1,7 @@
 """
 Adversarial attack implementations for DINOmite.
 """
+
 from src.attacks.fgsm import fgsm_attack
 from src.attacks.pgd import pgd_attack
 from src.attacks.bim import bim_attack
@@ -16,4 +17,3 @@ __all__ = [
     "deepfool_attack",
     "autoattack_evaluate",
 ]
-

@@ -7,6 +7,7 @@ Supports:
 - TRADES
 - MART
 """
+
 import argparse
 import torch
 import torch.nn as nn
@@ -37,17 +38,11 @@ from src.config import (
     MART_BETA,
 )
 
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-)
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 logger = logging.getLogger(__name__)
 
 
-def train_epoch_defense(
-    model, train_loader, optimizer, criterion, device,
-    defense_type, eps, alpha, steps, beta=None
-):
+def train_epoch_defense(model, train_loader, optimizer, criterion, device, defense_type, eps, alpha, steps, beta=None):
     """Train for one epoch with defense."""
     model.train()
     running_loss = 0.0
@@ -60,18 +55,39 @@ def train_epoch_defense(
 
         if defense_type == "pgd":
             loss = adversarial_training_step(
-                model, images, labels, optimizer, criterion,
-                attack_type='PGD', eps=eps, alpha=alpha, steps=steps
+                model,
+                images,
+                labels,
+                optimizer,
+                criterion,
+                attack_type="PGD",
+                eps=eps,
+                alpha=alpha,
+                steps=steps,
             )
         elif defense_type == "trades":
             loss, nat_loss, rob_loss = trades_training_step(
-                model, images, labels, optimizer, criterion,
-                beta=beta or TRADES_BETA, eps=eps, alpha=alpha, steps=steps
+                model,
+                images,
+                labels,
+                optimizer,
+                criterion,
+                beta=beta or TRADES_BETA,
+                eps=eps,
+                alpha=alpha,
+                steps=steps,
             )
         elif defense_type == "mart":
             loss = mart_training_step(
-                model, images, labels, optimizer, criterion,
-                beta=beta or MART_BETA, eps=eps, alpha=alpha, steps=steps
+                model,
+                images,
+                labels,
+                optimizer,
+                criterion,
+                beta=beta or MART_BETA,
+                eps=eps,
+                alpha=alpha,
+                steps=steps,
             )
         else:
             raise ValueError(f"Unknown defense type: {defense_type}")
@@ -85,10 +101,12 @@ def train_epoch_defense(
             total += labels.size(0)
             correct += (preds == labels).sum().item()
 
-        pbar.set_postfix({
-            'loss': f'{loss:.4f}',
-            'acc': f'{100*correct/total:.2f}%'
-        })
+        pbar.set_postfix(
+            {
+                "loss": f"{loss:.4f}",
+                "acc": f"{100 * correct / total:.2f}%",
+            },
+        )
 
     avg_loss = running_loss / len(train_loader)
     accuracy = 100 * correct / total
@@ -115,7 +133,7 @@ def evaluate(model, test_loader, criterion, device):
             total += labels.size(0)
             correct += (preds == labels).sum().item()
 
-            pbar.set_postfix({'acc': f'{100*correct/total:.2f}%'})
+            pbar.set_postfix({"acc": f"{100 * correct / total:.2f}%"})
 
     avg_loss = running_loss / len(test_loader)
     accuracy = 100 * correct / total
@@ -129,81 +147,38 @@ def main():
         type=str,
         required=True,
         choices=["pgd", "trades", "mart"],
-        help="Defense method to use"
+        help="Defense method to use",
     )
     parser.add_argument(
         "--dataset",
         type=str,
         default="cifar10",
         choices=["cifar10", "gtsrb", "tiny_imagenet"],
-        help="Dataset to use"
+        help="Dataset to use",
     )
-    parser.add_argument(
-        "--batch-size",
-        type=int,
-        default=DEFAULT_BATCH_SIZE,
-        help="Batch size for training"
-    )
-    parser.add_argument(
-        "--learning-rate",
-        type=float,
-        default=DEFAULT_LEARNING_RATE,
-        help="Learning rate"
-    )
-    parser.add_argument(
-        "--epochs",
-        type=int,
-        default=DEFAULT_EPOCHS,
-        help="Number of training epochs"
-    )
-    parser.add_argument(
-        "--eps",
-        type=float,
-        default=8.0/255.0,
-        help="Epsilon for adversarial training"
-    )
-    parser.add_argument(
-        "--alpha",
-        type=float,
-        default=2.0/255.0,
-        help="Alpha (step size) for PGD"
-    )
-    parser.add_argument(
-        "--steps",
-        type=int,
-        default=7,
-        help="Number of PGD steps"
-    )
+    parser.add_argument("--batch-size", type=int, default=DEFAULT_BATCH_SIZE, help="Batch size for training")
+    parser.add_argument("--learning-rate", type=float, default=DEFAULT_LEARNING_RATE, help="Learning rate")
+    parser.add_argument("--epochs", type=int, default=DEFAULT_EPOCHS, help="Number of training epochs")
+    parser.add_argument("--eps", type=float, default=8.0 / 255.0, help="Epsilon for adversarial training")
+    parser.add_argument("--alpha", type=float, default=2.0 / 255.0, help="Alpha (step size) for PGD")
+    parser.add_argument("--steps", type=int, default=7, help="Number of PGD steps")
     parser.add_argument(
         "--beta",
         type=float,
         default=None,
-        help="Beta parameter for TRADES/MART (default: 6.0 for TRADES, 5.0 for MART)"
+        help="Beta parameter for TRADES/MART (default: 6.0 for TRADES, 5.0 for MART)",
     )
-    parser.add_argument(
-        "--output-dir",
-        type=str,
-        default=MODELS_DIR,
-        help="Directory to save model"
-    )
+    parser.add_argument("--output-dir", type=str, default=MODELS_DIR, help="Directory to save model")
     parser.add_argument(
         "--model-name",
         type=str,
         default=None,
-        help="Name for saved model (default: {defense}_cifar10)"
+        help="Name for saved model (default: {defense}_cifar10)",
     )
     parser.add_argument(
-        "--device",
-        type=str,
-        default="cuda" if torch.cuda.is_available() else "cpu",
-        help="Device to use"
+        "--device", type=str, default="cuda" if torch.cuda.is_available() else "cpu", help="Device to use"
     )
-    parser.add_argument(
-        "--resume",
-        type=str,
-        default=None,
-        help="Path to checkpoint to resume from"
-    )
+    parser.add_argument("--resume", type=str, default=None, help="Path to checkpoint to resume from")
 
     args = parser.parse_args()
 
@@ -227,6 +202,7 @@ def main():
 
     # Get number of classes from config
     from src.config import DATASET_CONFIGS
+
     num_classes = DATASET_CONFIGS[dataset_type].num_classes
 
     # Set default model name
@@ -243,14 +219,14 @@ def main():
         batch_size=args.batch_size,
         shuffle=True,
         num_workers=4,
-        pin_memory=True
+        pin_memory=True,
     )
     test_loader = DataLoader(
         test_dataset,
         batch_size=args.batch_size,
         shuffle=False,
         num_workers=4,
-        pin_memory=True
+        pin_memory=True,
     )
 
     # Create model
@@ -262,8 +238,8 @@ def main():
     if args.resume:
         logger.info(f"Loading checkpoint from {args.resume}")
         checkpoint = torch.load(args.resume, map_location=device)
-        model.load_state_dict(checkpoint['model_state_dict'])
-        start_epoch = checkpoint['epoch'] + 1
+        model.load_state_dict(checkpoint["model_state_dict"])
+        start_epoch = checkpoint["epoch"] + 1
         logger.info(f"Resuming from epoch {start_epoch}")
 
     # Setup training
@@ -271,7 +247,7 @@ def main():
     optimizer = optim.Adam(model.parameters(), lr=args.learning_rate)
 
     if args.resume:
-        optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
+        optimizer.load_state_dict(checkpoint["optimizer_state_dict"])
 
     # Training loop
     best_acc = 0.0
@@ -283,33 +259,44 @@ def main():
         logger.info(f"Beta: {args.beta}")
 
     for epoch in range(start_epoch, args.epochs):
-        logger.info(f"\nEpoch {epoch+1}/{args.epochs}")
+        logger.info(f"\nEpoch {epoch + 1}/{args.epochs}")
 
         # Train
         train_loss, train_acc = train_epoch_defense(
-            model, train_loader, optimizer, criterion, device,
-            args.defense, args.eps, args.alpha, args.steps, args.beta
+            model,
+            train_loader,
+            optimizer,
+            criterion,
+            device,
+            args.defense,
+            args.eps,
+            args.alpha,
+            args.steps,
+            args.beta,
         )
 
         # Evaluate
         test_loss, test_acc = evaluate(model, test_loader, criterion, device)
 
         logger.info(
-            f"Epoch {epoch+1} - Train Loss: {train_loss:.4f}, Train Acc: {train_acc:.2f}%, "
+            f"Epoch {epoch + 1} - Train Loss: {train_loss:.4f}, Train Acc: {train_acc:.2f}%, "
             f"Test Loss: {test_loss:.4f}, Test Acc: {test_acc:.2f}%"
         )
 
         # Save checkpoint
-        checkpoint_path = os.path.join(args.output_dir, f"{args.model_name}_epoch_{epoch+1}.pth")
-        torch.save({
-            'epoch': epoch,
-            'model_state_dict': model.state_dict(),
-            'optimizer_state_dict': optimizer.state_dict(),
-            'train_loss': train_loss,
-            'train_acc': train_acc,
-            'test_loss': test_loss,
-            'test_acc': test_acc,
-        }, checkpoint_path)
+        checkpoint_path = os.path.join(args.output_dir, f"{args.model_name}_epoch_{epoch + 1}.pth")
+        torch.save(
+            {
+                "epoch": epoch,
+                "model_state_dict": model.state_dict(),
+                "optimizer_state_dict": optimizer.state_dict(),
+                "train_loss": train_loss,
+                "train_acc": train_acc,
+                "test_loss": test_loss,
+                "test_acc": test_acc,
+            },
+            checkpoint_path,
+        )
 
         # Save best model
         if test_acc > best_acc:

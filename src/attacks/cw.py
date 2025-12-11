@@ -7,9 +7,9 @@ Paper: https://arxiv.org/abs/1608.04644
 C&W is an optimization-based attack that finds minimal L2 perturbations.
 It's one of the strongest attacks but computationally expensive.
 """
+
 import torch
 import torch.optim as optim
-from typing import Union
 import logging
 
 logger = logging.getLogger(__name__)
@@ -68,9 +68,9 @@ def carlini_wagner_attack(
     model.eval()
 
     for i in range(batch_size):
-        img = images[i:i+1]
-        orig_label = original_labels[i:i+1]
-        targ_label = target_labels[i:i+1]
+        img = images[i : i + 1]
+        orig_label = original_labels[i : i + 1]
+        targ_label = target_labels[i : i + 1]
 
         # Transform to tanh space for optimization
         w = torch.atanh((img * 1.999999) - 1).detach()

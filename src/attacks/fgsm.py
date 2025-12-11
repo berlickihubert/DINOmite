@@ -7,9 +7,9 @@ Paper: https://arxiv.org/abs/1412.6572
 FGSM is a single-step attack that moves in the direction of the gradient sign.
 It's fast but less effective than iterative attacks like PGD.
 """
+
 import torch
 import torch.nn.functional as F
-from typing import Union
 import logging
 
 logger = logging.getLogger(__name__)
@@ -93,6 +93,3 @@ def fgsm_attack(
     if was_single:
         return adv_images.squeeze(0).detach()
     return adv_images.detach()
-
-
-

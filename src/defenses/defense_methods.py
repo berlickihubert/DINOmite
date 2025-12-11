@@ -9,11 +9,10 @@ Based on:
 - Wang et al., "Improving Adversarial Robustness Requires Revisiting Misclassified Examples"
   Paper: https://openreview.net/pdf?id=rklOg6EFwS
 """
+
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-import torchvision.transforms as transforms
-from typing import Optional
 
 from src.attacks import pgd_attack, fgsm_attack
 
@@ -36,7 +35,7 @@ class InputTransformationDefense:
     @staticmethod
     def bit_depth_reduction(images, bits=4):
         """Reduce bit depth of images."""
-        levels = 2 ** bits
+        levels = 2**bits
         return torch.round(images * (levels - 1)) / (levels - 1)
 
     @staticmethod
@@ -60,7 +59,7 @@ class FeatureDenoising(nn.Module):
 
     def __init__(self, channels, kernel_size=3):
         super().__init__()
-        self.conv = nn.Conv2d(channels, channels, kernel_size, padding=kernel_size//2)
+        self.conv = nn.Conv2d(channels, channels, kernel_size, padding=kernel_size // 2)
         self.bn = nn.BatchNorm2d(channels)
 
     def forward(self, x):
@@ -71,8 +70,15 @@ class FeatureDenoising(nn.Module):
 
 
 def adversarial_training_step(
-    model, images, labels, optimizer, criterion,
-    attack_type='PGD', eps=8/255, alpha=2/255, steps=7
+    model,
+    images,
+    labels,
+    optimizer,
+    criterion,
+    attack_type="PGD",
+    eps=8 / 255,
+    alpha=2 / 255,
+    steps=7,
 ):
     """
     Perform one step of adversarial training.
@@ -81,9 +87,9 @@ def adversarial_training_step(
     model.train()
 
     # Generate adversarial examples
-    if attack_type == 'PGD':
+    if attack_type == "PGD":
         adv_images = pgd_attack(model, images, labels, eps=eps, alpha=alpha, steps=steps)
-    elif attack_type == 'FGSM':
+    elif attack_type == "FGSM":
         adv_images = fgsm_attack(model, images, labels, epsilon=eps)
     else:
         adv_images = images
@@ -99,8 +105,15 @@ def adversarial_training_step(
 
 
 def trades_training_step(
-    model, images, labels, optimizer, criterion,
-    beta=6.0, eps=8/255, alpha=2/255, steps=7
+    model,
+    images,
+    labels,
+    optimizer,
+    criterion,
+    beta=6.0,
+    eps=8 / 255,
+    alpha=2 / 255,
+    steps=7,
 ):
     """
     TRADES training: Trade-off between accuracy and robustness.
@@ -140,7 +153,7 @@ def trades_training_step(
     # KL divergence between natural and adversarial predictions
     p_natural = F.softmax(outputs_natural, dim=1)
     p_adv = F.log_softmax(outputs_adv, dim=1)
-    loss_robust = F.kl_div(p_adv, p_natural, reduction='batchmean')
+    loss_robust = F.kl_div(p_adv, p_natural, reduction="batchmean")
 
     # Combined loss
     loss = loss_natural + beta * loss_robust
@@ -153,8 +166,16 @@ def trades_training_step(
 
 
 def mart_training_step(
-    model, images, labels, optimizer, criterion,
-    beta=5.0, eps=8/255, alpha=2/255, steps=7, num_classes=None
+    model,
+    images,
+    labels,
+    optimizer,
+    criterion,
+    beta=5.0,
+    eps=8 / 255,
+    alpha=2 / 255,
+    steps=7,
+    num_classes=None,
 ):
     """
     MART training: Misclassification Aware adveRsarial Training.
@@ -194,7 +215,7 @@ def mart_training_step(
     # Natural predictions
     outputs_natural = model(images)
     preds_natural = torch.argmax(outputs_natural, dim=1)
-    correct_mask = (preds_natural == labels)
+    correct_mask = preds_natural == labels
 
     # Adversarial examples
     adv_images = pgd_attack(model, images, labels, eps=eps, alpha=alpha, steps=steps)
@@ -202,14 +223,14 @@ def mart_training_step(
 
     # BCE loss for misclassified examples
     p_adv = F.softmax(outputs_adv, dim=1)
-    loss_bce = F.binary_cross_entropy(
-        p_adv, F.one_hot(labels, num_classes=num_classes).float(), reduction='none'
-    ).sum(dim=1)
+    loss_bce = F.binary_cross_entropy(p_adv, F.one_hot(labels, num_classes=num_classes).float(), reduction="none").sum(
+        dim=1
+    )
 
     # KL divergence
     p_natural = F.softmax(outputs_natural, dim=1)
     p_adv_log = F.log_softmax(outputs_adv, dim=1)
-    loss_kl = F.kl_div(p_adv_log, p_natural, reduction='none').sum(dim=1)
+    loss_kl = F.kl_div(p_adv_log, p_natural, reduction="none").sum(dim=1)
 
     # Combined loss
     loss = loss_bce.mean() + beta * (loss_kl * (1 - correct_mask.float())).mean()
@@ -222,8 +243,15 @@ def mart_training_step(
 
 
 def pgd_adversarial_training(
-    model, train_loader, device, epochs=10, eps=8/255, alpha=2/255, steps=7,
-    lr=1e-4, save_path=None
+    model,
+    train_loader,
+    device,
+    epochs=10,
+    eps=8 / 255,
+    alpha=2 / 255,
+    steps=7,
+    lr=1e-4,
+    save_path=None,
 ):
     """
     Full adversarial training using PGD.
@@ -241,8 +269,7 @@ def pgd_adversarial_training(
             images, labels = images.to(device), labels.to(device)
 
             loss = adversarial_training_step(
-                model, images, labels, optimizer, criterion,
-                attack_type='PGD', eps=eps, alpha=alpha, steps=steps
+                model, images, labels, optimizer, criterion, attack_type="PGD", eps=eps, alpha=alpha, steps=steps
             )
 
             running_loss += loss
@@ -254,17 +281,25 @@ def pgd_adversarial_training(
 
         avg_loss = running_loss / len(train_loader)
         accuracy = 100 * correct / total
-        print(f"Epoch {epoch+1}/{epochs} - Loss: {avg_loss:.4f}, Accuracy: {accuracy:.2f}%")
+        print(f"Epoch {epoch + 1}/{epochs} - Loss: {avg_loss:.4f}, Accuracy: {accuracy:.2f}%")
 
         if save_path:
-            torch.save({'model': model.state_dict()}, save_path)
+            torch.save({"model": model.state_dict()}, save_path)
 
     return model
 
 
 def trades_training(
-    model, train_loader, device, epochs=10, beta=6.0, eps=8/255, alpha=2/255, steps=7,
-    lr=1e-4, save_path=None
+    model,
+    train_loader,
+    device,
+    epochs=10,
+    beta=6.0,
+    eps=8 / 255,
+    alpha=2 / 255,
+    steps=7,
+    lr=1e-4,
+    save_path=None,
 ):
     """
     TRADES adversarial training.
@@ -284,8 +319,15 @@ def trades_training(
             images, labels = images.to(device), labels.to(device)
 
             loss, nat_loss, rob_loss = trades_training_step(
-                model, images, labels, optimizer, criterion,
-                beta=beta, eps=eps, alpha=alpha, steps=steps
+                model,
+                images,
+                labels,
+                optimizer,
+                criterion,
+                beta=beta,
+                eps=eps,
+                alpha=alpha,
+                steps=steps,
             )
 
             running_loss += loss
@@ -302,10 +344,12 @@ def trades_training(
         avg_nat = running_natural_loss / len(train_loader)
         avg_rob = running_robust_loss / len(train_loader)
         accuracy = 100 * correct / total
-        print(f"Epoch {epoch+1}/{epochs} - Loss: {avg_loss:.4f} "
-              f"(Natural: {avg_nat:.4f}, Robust: {avg_rob:.4f}), Accuracy: {accuracy:.2f}%")
+        print(
+            f"Epoch {epoch + 1}/{epochs} - Loss: {avg_loss:.4f} "
+            f"(Natural: {avg_nat:.4f}, Robust: {avg_rob:.4f}), Accuracy: {accuracy:.2f}%"
+        )
 
         if save_path:
-            torch.save({'model': model.state_dict()}, save_path)
+            torch.save({"model": model.state_dict()}, save_path)
 
     return model

@@ -7,9 +7,9 @@ Paper: https://arxiv.org/abs/1706.06083
 PGD is an iterative attack that projects perturbations onto an epsilon ball.
 It's considered one of the strongest white-box attacks.
 """
+
 import torch
 import torch.nn.functional as F
-from typing import Union, Tuple
 import logging
 
 logger = logging.getLogger(__name__)

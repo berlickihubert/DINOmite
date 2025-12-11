@@ -8,9 +8,9 @@ Based on: Croce & Hein, "Reliable evaluation of adversarial robustness with an e
 diverse parameter-free attacks" (2020)
 Paper: https://arxiv.org/abs/2003.01690
 """
+
 import torch
-import torch.nn.functional as F
-from typing import Dict, Tuple, Optional
+from typing import Optional
 import logging
 
 logger = logging.getLogger(__name__)
@@ -18,6 +18,7 @@ logger = logging.getLogger(__name__)
 # Try to import official AutoAttack
 try:
     from autoattack import AutoAttack
+
     AUTOATTACK_AVAILABLE = True
 except ImportError:
     AUTOATTACK_AVAILABLE = False
@@ -29,7 +30,7 @@ def autoattack_evaluate(
     model: torch.nn.Module,
     dataloader: torch.utils.data.DataLoader,
     device: torch.device,
-    eps: float = 8/255,
+    eps: float = 8 / 255,
     num_samples: Optional[int] = None,
 ) -> float:
     """
@@ -53,7 +54,7 @@ def autoattack_evaluate(
     if AUTOATTACK_AVAILABLE:
         # Use official AutoAttack
         try:
-            adversary = AutoAttack(model, norm='Linf', eps=eps, version='standard', device=device)
+            adversary = AutoAttack(model, norm="Linf", eps=eps, version="standard", device=device)
 
             # Collect data
             x_test = []
@@ -81,8 +82,8 @@ def autoattack_evaluate(
 
     # Simplified version using ensemble of attacks
     attacks = [
-        ('PGD', lambda m, img, lbl: pgd_attack(m, img, lbl, eps=eps, alpha=eps/10, steps=40)),
-        ('FGSM', lambda m, img, lbl: fgsm_attack(m, img, lbl, epsilon=eps)),
+        ("PGD", lambda m, img, lbl: pgd_attack(m, img, lbl, eps=eps, alpha=eps / 10, steps=40)),
+        ("FGSM", lambda m, img, lbl: fgsm_attack(m, img, lbl, epsilon=eps)),
     ]
 
     results = []
@@ -115,4 +116,3 @@ def autoattack_evaluate(
     # Return minimum accuracy (worst case)
     min_acc = min(results) if results else 0.0
     return min_acc
-
