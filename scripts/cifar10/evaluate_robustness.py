@@ -79,3 +79,20 @@ if os.path.exists(robust_model_path):
     
 else:
     print(f"Robust model not found at {robust_model_path}.")
+
+
+print("\Evaluating robust model (Trades)")
+robust_model_path = os.path.join(project_root, "models", "cifar10_linear_classifier_robust_trades.pth")
+
+if os.path.exists(robust_model_path):
+    robust_model = DinoWithLinearHead(robust_model_path)
+    robust_model = robust_model.to(device)
+
+    acc_clean_robust = evaluate_model(robust_model, test_loader, device, desc="Robust Clean")
+    acc_pgd_robust = evaluate_model(robust_model, test_loader, device, attack_fn=pgd_attack, desc="Robust PGD")
+
+    print(f"Robust Model - general accuracy: {acc_clean_robust:.2f}%")
+    print(f"Robust Model - PGD accuracy: {acc_pgd_robust:.2f}%")
+    
+else:
+    print(f"Robust model not found at {robust_model_path}.")

@@ -2,19 +2,19 @@ accuracies = [0.2, 3.0, 6.6, 8.0, 11.0, 13.8, 14.4, 12.8, 14.4, 12.6, 15.2, 16.4
 losses = [10.532, 2.7563, 2.5004, 2.4525, 2.373, 2.3204, 2.2778, 2.2457, 2.2654, 2.2305, 2.2675, 2.2109, 2.1837, 2.1751, 2.2128, 2.1748, 2.1546, 2.1511, 2.173, 2.1034, 2.1082, 2.0773, 2.0854, 2.0413, 2.1135, 2.0718, 2.0497, 1.9952, 2.0287, 2.0626, 1.9561, 1.9615, 1.9409, 1.9121, 1.9462, 1.8986, 1.9404, 1.8803, 1.9052, 1.8699, 1.9243, 1.8934, 1.8487, 1.8889, 1.8552, 1.8822, 1.8481, 1.8692, 1.8794, 1.8579, 1.8149, 1.8081, 1.7969, 1.8326, 1.7629, 1.7879, 1.7317, 1.8243, 1.7107, 1.7324, 1.7583, 1.7361, 1.7301, 1.7002, 1.7138, 1.7118, 1.6599, 1.6648, 1.699, 1.6388, 1.7615, 1.7178, 1.7092, 1.7031, 1.6814, 1.7046, 1.7022, 1.6379, 1.6575, 1.6464, 1.6574, 1.6242, 1.604, 1.5831, 1.5917, 1.6357, 1.6127, 1.6724, 1.6349, 1.611, 1.5969, 1.6848, 1.6213, 1.652, 1.5891, 1.5868, 1.5422, 1.5773, 1.5812, 1.6038]
 import matplotlib.pyplot as plt
 
-def plot_acc(accuracies):
-    plt.figure(figsize=(10, 5))
-    plt.plot(accuracies, label='Accuracy (%)', color='blue')
-    plt.title('Model Accuracy over Epochs')
-    plt.xlabel('Epochs')
+def plot_acc(accuracies, path='adversarial_examples/accuracy_plot_pgd-at.png'):
+    plt.figure(figsize=(6, 5))
+    plt.plot(accuracies, label='Robust accuracy (%)', color='blue')
+    plt.title('Model accuracy over training steps for PGD-AT method')
+    plt.xlabel('Training steps')
     plt.ylabel('Accuracy (%)')
     plt.ylim(0, 100)
     plt.grid(True)
     plt.legend()
-    plt.savefig('adversarial_examples/accuracy_plot.png')
+    plt.savefig(path)
     plt.close()
 
-def plot_loss(losses):
+def plot_loss(losses, path='adversarial_examples/loss_plot.png'):
     plt.figure(figsize=(10, 5))
     plt.plot(losses, label='Loss', color='red')
     plt.title('Model Loss over Epochs')
@@ -23,7 +23,7 @@ def plot_loss(losses):
     plt.ylim(0, max(losses) + 1)
     plt.grid(True)
     plt.legend()
-    plt.savefig('adversarial_examples/loss_plot.png')
+    plt.savefig(path)
     plt.close()
 
 
