@@ -1,7 +1,11 @@
 # DINOmite
-
 A project for adversarial robustness testing using DINOv3 vision transformer models.
 
+### Poster
+Check out the poster [there](https://github.com/berlickihubert/DINOmite/blob/main/poster.pdf).
+This poster was presented during the [DUKAI](https://dukai.cs.uni.wroc.pl/) conference (artificial intelligence conference at the University of Wroclaw).
+
+___
 ## Used datasets
 
 ### CIFAR-10 Dataset
